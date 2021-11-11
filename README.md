@@ -1,5 +1,5 @@
 # Jeu 2048
-Pour compiler le jeu : `g++ main_game.cpp -o main_game.exe modele.h`
+Pour compiler le jeu : `g++ main_game.cpp -o main_game modele.cpp`
 
 ## Barême
 La note 12/20 pourra être obtenue si:
@@ -10,3 +10,9 @@ La note 12/20 pourra être obtenue si:
 5. l’implantation respecte la structure imposée.
 6. toutes les fonctions sont spécifiées, documentées et testées.
 7. lors de l’affichage, les colonnes sont bien alignées, quelles que soient les valeurs de chaque tuile.
+
+## Rappels GIT :
+1. `git pull` -> mise à jour des fichiers locaux.
+2. modifier les fichiers.
+3. `git commit -a -m "un message des modifications"`
+4. `git push` -> téleverser les fichiers vers Github.
