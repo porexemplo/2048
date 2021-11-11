@@ -3,20 +3,19 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
+#include "modele.h"
 
 using namespace std;
 
-typedef vector<vector<int>> Plateau;
-
 Plateau plateauVide() {
-	Plateau plaVide(4);
+	Plateau plaVide (4);
 	for (int i = 0; i< 4;i++) {
-		plaVide[i].resize(4);
+		plaVide[i] = vector<int>(4);
 	}
 	return plaVide;
 }
 
-int random_position(int max) {
+int randomPosition(int maxInt) {
 	srand ((unsigned)time(0));
-	 return (rand()%max);
- }
+	 return (rand()%maxInt);
+}

@@ -3,6 +3,6 @@
 using namespace std;
 
 int main() {
-	cout << "hello"<< endl;
+    Plateau plateau = plateauVide();
     return 0;
 }
