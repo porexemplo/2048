@@ -9,7 +9,7 @@ using namespace std;
 
 Plateau plateauVide() {
 	Plateau plaVide (4);
-	for (int i = 0; i< 4;i++) {
+	for (int i = 0; i < 4; i++) {
 		plaVide[i] = vector<int>(4);
 	}
 	return plaVide;
