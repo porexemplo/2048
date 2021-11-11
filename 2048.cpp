@@ -1,12 +1,9 @@
 #include "modele.h"
+#include <iostream>
+using namespace std;
 
 int main() {
+	cout << "hello"<< endl;
     return 0;
     
-    // test
-    // test redyummy
-    // test red
-    //trying again
-    // modification
-    // this is a modification last last
 }

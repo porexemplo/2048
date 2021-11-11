@@ -12,6 +12,7 @@ typedef vector<vector<int>> Plateau;
 
 Plateau plateauVide();
 Plateau plateauInitial();
+int random_position(int max);
 
 int tireDeuxOuQuatre();
 Plateau deplacementGauche(Plateau plateau);
