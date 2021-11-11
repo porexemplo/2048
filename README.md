@@ -1,5 +1,5 @@
 # Jeu 2048
-Pour compiler le jeu : `g++ main_game.cpp -o main_game.exe modele.h`
+Pour compiler le jeu : `g++ main_game.cpp -o main_game modele.cpp`
 
 ## Barême
 La note 12/20 pourra être obtenue si:
