@@ -16,3 +16,10 @@ La note 12/20 pourra être obtenue si:
 2. modifier les fichiers.
 3. `git commit -a -m "un message des modifications"`
 4. `git push` -> téleverser les fichiers vers Github.
+
+----
+
+## Algorithme
+
+![image](https://user-images.githubusercontent.com/62790552/141335661-cbe08238-7b3c-4908-9e67-6bf23a776b08.png)
+source: https://www.baeldung.com/
