@@ -50,6 +50,6 @@ Plateau deplacementGauche(Plateau plateau) {
 		line = organizeLeft(line);
 		line = sumX(line);
 		plateau[i] = organizeLeft(line);
-		}
+	}
 	return plateau;
 }
