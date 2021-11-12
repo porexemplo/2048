@@ -3,19 +3,16 @@
 using namespace std;
 
 int main() {
-    Plateau plateau = {
-        {0, 2, 4, 8},
-        {2, 2, 2, 2},
-        {0, 0, 2, 4},
-        {2, 0, 2, 8},
-    };
+	cout << randomPosition(4) << " " << randomPosition(4) << endl;
+    //Plateau plateau = plateauVide();
+    //plateau = addRandomTile(plateau);
 
-    for (auto line : deplacementGauche(plateau)) {
-        for (int element : line) {
-            cout << element << " ";
-        }
-        cout << endl;
-    }
+    //for (auto line : plateau) {
+      //  for (int element : line) {
+        //    cout << element << " ";
+        //}
+        //cout << endl;
+    //}
 
     // vector<int> line = {2, 2, 2, 2};
     // line = organizeLeft(line);

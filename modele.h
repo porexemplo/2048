@@ -23,7 +23,7 @@ Plateau plateauVide();
 Plateau plateauInitial();
 
 /**
- * @brief renvoi un entier < max aléatoirement
+ * @brief renvoi un entier < maxInt aléatoirement
  * 
  * @param maxInt 
  * @return un entier compris entre 0 et maxInt
@@ -117,3 +117,5 @@ int score(Plateau plateau);
 vector<int> sumX(vector<int> line);
 
 vector<int> organizeLeft(vector<int> line);
+
+Plateau addRandomTile (Plateau plateau);
