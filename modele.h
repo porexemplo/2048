@@ -51,7 +51,7 @@ Plateau deplacementGauche(Plateau plateau);
  * @param plateau 
  * @return ** Plateau après le déplacement
  */
-Plateau deplacementDroite(Plateau plateau);
+Plateau deplacementDroite(Plateau plateau); // @asma
 
 /**
  * @brief déplacement vers le haut suivant les règles du jeu; renvoie un nouveau plateau
@@ -59,7 +59,7 @@ Plateau deplacementDroite(Plateau plateau);
  * @param plateau 
  * @return ** Plateau après le déplacement
  */
-Plateau deplacementHaut(Plateau plateau);
+Plateau deplacementHaut(Plateau plateau); // @asma
 
 /**
  * @brief déplacement vers le bas suivant les règles du jeu; renvoie un nouveau plateau
@@ -67,7 +67,7 @@ Plateau deplacementHaut(Plateau plateau);
  * @param plateau 
  * @return ** Plateau après le déplacement
  */
-Plateau deplacementBas(Plateau plateau);
+Plateau deplacementBas(Plateau plateau); // @redwane
 
 /**
  * @brief effectue un déplacement en éxecutant l'une des fonctions de déplacement
@@ -76,7 +76,7 @@ Plateau deplacementBas(Plateau plateau);
  * @param direction un entier parmi {7, 4, 8, 2} - voir variables const.
  * @return Plateau après déplacement
  */
-Plateau deplacement(Plateau plateau, int direction);
+Plateau deplacement(Plateau plateau, int direction); // @all
 
 /**
  * @brief affiche le plateau g au console
@@ -84,7 +84,7 @@ Plateau deplacement(Plateau plateau, int direction);
  * @param g un plateau
  * @return string 
  */
-string dessine(Plateau g);
+string dessine(Plateau g); // @all
 
 /**
  * @brief vérifie si la partie est terminée
@@ -113,3 +113,7 @@ bool estGagnant(Plateau plateau);
  * @return int score de la partie.
  */
 int score(Plateau plateau);
+
+vector<int> sumX(vector<int> line);
+
+vector<int> organizeLeft(vector<int> line);
