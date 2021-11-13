@@ -7,6 +7,10 @@
 
 using namespace std;
 
+void timeInit() {
+	srand ((unsigned)time(0));
+}
+
 Plateau plateauVide() {
 	Plateau plaVide (4);
 	for (int i = 0; i < 4; i++) {
@@ -16,23 +20,20 @@ Plateau plateauVide() {
 }
 
 int randomPosition(int maxInt) {
-	srand ((unsigned)time(0));
 	return (rand()%maxInt);
-	srand ((unsigned)time(0));
 }
 
 int tireDeuxOuQuatre() {
 	vector<int> possib = {2, 4};
-	srand ((unsigned)time(0));
 	bool TrueFalse = (rand() % 100) > 90;
 	return possib[TrueFalse];
 }
 
 Plateau addRandomTile (Plateau plateau) { // @redwane
 	if (plateau == plateauVide()) {
-		//int i = randomPosition(4);
-		//int j = randomPosition(4);
-		plateau[randomPosition(4)][randomPosition(4)] = tireDeuxOuQuatre();	
+		int X = randomPosition(4),
+			Y = randomPosition(4);
+		plateau[X][Y] = tireDeuxOuQuatre();	
 	}
 	return plateau;
 }

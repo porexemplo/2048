@@ -119,3 +119,5 @@ vector<int> sumX(vector<int> line);
 vector<int> organizeLeft(vector<int> line);
 
 Plateau addRandomTile (Plateau plateau);
+
+void timeInit();
