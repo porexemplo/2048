@@ -17,18 +17,19 @@ Plateau plateauVide() {
 
 int randomPosition(int maxInt) {
 	srand ((unsigned)time(0));
-	 return (rand()%maxInt);
-	 srand ((unsigned)time(0));
+	return (rand()%maxInt);
+	srand ((unsigned)time(0));
 }
-int tireDeuxOuQuatre(){
+
+int tireDeuxOuQuatre() {
 	vector<int> possib = {2, 4};
 	srand ((unsigned)time(0));
 	bool TrueFalse = (rand() % 100) > 90;
 	return possib[TrueFalse];
 }
 
-Plateau addRandomTile (Plateau plateau){ // @redwane
-	if (plateau == plateauVide()){
+Plateau addRandomTile (Plateau plateau) { // @redwane
+	if (plateau == plateauVide()) {
 		//int i = randomPosition(4);
 		//int j = randomPosition(4);
 		plateau[randomPosition(4)][randomPosition(4)] = tireDeuxOuQuatre();	
