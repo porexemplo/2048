@@ -115,9 +115,36 @@ bool estGagnant(Plateau plateau);
 int score(Plateau plateau);
 
 vector<int> sumX(vector<int> line);
-
+/**
+ * @brief organise les lignes du tableau vers la guache 
+ * 
+ * @param vector<int> line, ligne du tableau
+ * @param vector<int> newline, la nouvelle ligne qui sera renvoyée 
+ * @return une nouvelle ligne organisée de sorte que tous les nombres différents de 0 sont déplacés vers la gauche
+ */
 vector<int> organizeLeft(vector<int> line);
 
+/**
+ * @brief choisit une case aléatoire du tableau et renvoie soit 2 ou 4 dans la case
+ * 
+ * @param plateau 
+ * @param int i qui est initialisé à une valeur aléatoire, représente les lignes du tableau 
+ * @param int j qui est initialisé à une valeur aléatoire, représente les colonnes du tableau 
+ * @return dans la case du tableau aléatoire, on renvoie soit 2 ou 4  avec la fonction tireDeuxOuQuatre 
+ */
 Plateau addRandomTile (Plateau plateau);
 
+/**
+ * @brief organise les lignes du tableau vers la droite
+ * 
+ * @param vector<int> line, ligne du tableau
+ * @param vector<int> newline, la nouvelle ligne qui sera renvoyée 
+ * @return une nouvelle ligne organisée de sorte que tous les nombres différents de 0 sont déplacés vers la droite
+ */
+vector<int> organizeRight(vector<int> line) ;
+
 void timeInit();
+
+vector<int> sumY(Plateau plateauy);
+
+
