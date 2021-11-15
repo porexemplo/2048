@@ -19,8 +19,29 @@ Plateau plateauVide() {
 	return plaVide;
 }
 
-int randomPosition(int maxInt) {
-	return (rand()%maxInt);
+Plateau plateauInitial() {
+	Plateau plateau = plateauVide();
+	plateau = addRandomTile(plateau);
+	plateau = addRandomTile(plateau);
+	return plateau;
+}
+
+vector<int> randomPosition(Plateau plateau) {
+	vector<vector<int>> positions;
+	for (int i = 0; i < plateau.size(); i++) {
+		for (int j = 0; j < plateau.size(); j++) {
+			if (plateau[i][j] == 0) {
+				positions.push_back({i, j});
+			}
+		}
+	}
+	for (auto line : positions) {
+        for (int element : line) {
+            cout << element << " ";
+        }
+        cout << endl;
+	}
+	return positions[(rand() % positions.size())];
 }
 
 int tireDeuxOuQuatre() {
@@ -29,12 +50,10 @@ int tireDeuxOuQuatre() {
 	return possib[TrueFalse];
 }
 
-Plateau addRandomTile (Plateau plateau) { // @redwane
-	if (plateau == plateauVide()) {
-		int X = randomPosition(4),
-			Y = randomPosition(4);
-		plateau[X][Y] = tireDeuxOuQuatre();	
-	}
+Plateau addRandomTile (Plateau plateau) {
+		int i = randomPosition(plateau)[0],
+			j = randomPosition(plateau)[1];
+		plateau[i][j] = tireDeuxOuQuatre();
 	return plateau;
 }
 
@@ -45,8 +64,17 @@ vector<int> sumX(vector<int> line) {
 			line[i+1] = 0;
 		}
 	}
-
 	return line;
+}
+
+Column sumY(Column column){
+	for (int i = 0; i < 3; i++) {
+		if (column[i][0] == column[i+1][0]) {
+			column[i][0] = column[i][0] + column[i+1][0];
+			column[i+1][0] = 0;
+		}
+	}
+	return column;
 }
 
 vector<int> organizeLeft(vector<int> line) {
@@ -61,6 +89,48 @@ vector<int> organizeLeft(vector<int> line) {
 	return newLine;
 }
 
+vector<int> organizeRight(vector<int> line) {
+	vector<int> newLine = {0, 0, 0, 0};
+	int position = 3;
+	for (int i = 3; i >= 0 ; i--){
+		if (line[i] != 0 ){
+			newLine[position] = line[i];
+			position--;
+		}
+	}
+	return newLine;
+}
+
+Column organizeUp(Column column) {
+	Column newColumn = {{0},
+					    {0},
+						{0},
+						{0}};
+	int position = 0;
+	for (int i = 0; i < 4; i++) {
+		if (column[i][0] != 0) {
+			newColumn[position][0] = column[i][0];
+			position++;
+		}
+	}
+	return newColumn;
+}
+
+Column organizeDown(Column column) {
+	Column newColumn = {{0},
+					    {0},
+						{0},
+						{0}};
+	int position = 3;
+	for (int i = 3; i >= 0; i--) {
+		if (column[i][0] != 0) {
+			newColumn[position][0] = column[i][0];
+			position--;
+		}
+	}
+	return newColumn;
+}
+
 Plateau deplacementGauche(Plateau plateau) {
 	vector<int> line;
 	for (int i = 0; i < plateau.size(); i++) {
@@ -71,57 +141,66 @@ Plateau deplacementGauche(Plateau plateau) {
 	}
 	return plateau;
 }
-Plateau deplacementDroite(Plateau plateau){
+
+Plateau deplacementDroite(Plateau plateau) {
 	vector<int> line;
 	for (int i = 0; i < plateau.size(); i++) {
 		line = plateau[i];
 		line = organizeRight(line);
-		line =sumX(line);
+		line = sumX(line);
 		plateau[i] = organizeRight(line);
 	}
 	return plateau;
-	
-Plateau sumY(Plateau plateauy){
-	for (int i = 0; i<4; i++){
-		for(int j =0; j<4; i++){
-			if (plateauy[i][j] == plateauy[i][j+1]){
-				plateauy[i][j]=plateauy[i][j]+plateauy[i][j+1];
-				plateauy[i][j+1] = 0;
-			}
+}
+
+Plateau deplacementHaut(Plateau plateau) {
+	Column column (4);
+	for (int i = 0; i < plateau.size(); i++) {
+		for (int j = 0; j < plateau.size(); j++) {
+			column[j] = vector<int> (1);
+			column[j][0] = plateau[j][i];
 		}
-	
-}
-	return plateauy;
-}
+		column = organizeUp(column);
+		column = sumY(column);
+		column = organizeUp(column);
 
-
-vector<int> organizeRight(vector<int> line) {
-	vector<int>newLine ={0, 0, 0, 0};
-	int position = 3;
-	for (int i = 0; i<4 ; i++){
-		if (line[i] != 0 ){
-			newLine[position] = line[i];
-			position = position-1;
+		for (int j = 0; j < plateau.size(); j++) {
+			plateau[j][i] = column[j][0];
 		}
 	}
-	return newLine;
+	return plateau;
 }
-/*Plateau organizeUp(Plateau plateauy) {
-	Plateau newPlateauy;
-	for (int i =0; i<4:i++){
-		for (int j =0; j<4;j++){
-			newPlateauy[i][j]= 0;
+
+Plateau deplacementBas(Plateau plateau) {
+	Column column (4);
+	for (int i = 0; i < plateau.size(); i++) {
+		for (int j = 0; j < plateau.size(); j++) {
+			column[j] = vector<int> (1);
+			column[j][0] = plateau[j][i];
+		}
+		column = organizeDown(column);
+		column = sumY(column);
+		column = organizeDown(column);
+
+		for (int j = 0; j < plateau.size(); j++) {
+			plateau[j][i] = column[j][0];
 		}
 	}
-	int ligne =0;
-	int colonne = 0;
-	for (int i =0; i<4:i++){
-		for (int j =0; j<4;j++){
-			if (plateauy[i][j] !=0){
-				newPlateauy[ligne][colonne]= plateau[i][j];
-				
-				colonne++;
-				if 
-				*/
+	return plateau;
+}
 
-
+Plateau deplacement(Plateau plateau, int direction) {
+	if (direction == GAUCHE) {
+		plateau = deplacementGauche(plateau);
+	}
+	if (direction == DROITE) {
+		plateau = deplacementDroite(plateau);
+	}
+	if (direction == HAUT) {
+		plateau = deplacementHaut(plateau);
+	}
+	if (direction == BAS) {
+		plateau = deplacementBas(plateau);
+	}
+	return plateau;
+}

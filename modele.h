@@ -9,6 +9,7 @@ const int GAUCHE = 7,
           BAS = 2;
 
 typedef vector< vector<int> > Plateau;
+typedef vector< vector<int> > Column;
 
 /**
  * @returns un plateau vide
@@ -28,7 +29,7 @@ Plateau plateauInitial();
  * @param maxInt 
  * @return un entier compris entre 0 et maxInt
  */
-int randomPosition(int maxInt);
+vector<int> randomPosition(Plateau plateau);
 
 /**
  * @brief tirer 2 ou 4 aléatoirement
@@ -115,6 +116,7 @@ bool estGagnant(Plateau plateau);
 int score(Plateau plateau);
 
 vector<int> sumX(vector<int> line);
+
 /**
  * @brief organise les lignes du tableau vers la guache 
  * 
@@ -124,6 +126,10 @@ vector<int> sumX(vector<int> line);
  */
 vector<int> organizeLeft(vector<int> line);
 
+Column organizeUp(Column column);
+
+Column organizeDown(Column column);
+
 /**
  * @brief choisit une case aléatoire du tableau et renvoie soit 2 ou 4 dans la case
  * 
@@ -132,7 +138,7 @@ vector<int> organizeLeft(vector<int> line);
  * @param int j qui est initialisé à une valeur aléatoire, représente les colonnes du tableau 
  * @return dans la case du tableau aléatoire, on renvoie soit 2 ou 4  avec la fonction tireDeuxOuQuatre 
  */
-Plateau addRandomTile (Plateau plateau);
+Plateau addRandomTile(Plateau plateau);
 
 /**
  * @brief organise les lignes du tableau vers la droite
@@ -145,6 +151,4 @@ vector<int> organizeRight(vector<int> line) ;
 
 void timeInit();
 
-vector<int> sumY(Plateau plateauy);
-
-
+Column sumY(Column column);
