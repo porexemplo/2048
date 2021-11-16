@@ -12,16 +12,6 @@ int main() {
         {0, 8, 8, 8},
     };
 
-    // Column column = {
-    //     {2},
-    //     {0},
-    //     {2},
-    //     {0},
-    // };
-
-    // -> {0, 0, 2, 4}
-    // <- {4, 2, 0, 0}
-
     // vector<int> pos = randomPosition(plateau);
 
     // cout << "i= " << pos[0] << endl;
