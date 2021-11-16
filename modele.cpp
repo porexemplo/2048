@@ -50,9 +50,10 @@ int tireDeuxOuQuatre() {
 	return possib[TrueFalse];
 }
 
-Plateau addRandomTile (Plateau plateau) {
-	int i = randomPosition(plateau)[0],
-		j = randomPosition(plateau)[1];
+Plateau addRandomTile(Plateau plateau) {
+	vector<int> randPos = randomPosition(plateau);
+	int i = randPos[0],
+		j = randPos[1];
 	plateau[i][j] = tireDeuxOuQuatre();
 	return plateau;
 }
