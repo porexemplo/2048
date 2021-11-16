@@ -1,5 +1,6 @@
 # Jeu 2048
 Pour compiler le jeu : `g++ main_game.cpp -o main_game modele.cpp`
+
 Compiler et exécuter -- linux : `g++ main_game.cpp -o main_game modele.cpp`
 
 ## Barême
