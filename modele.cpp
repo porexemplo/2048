@@ -52,21 +52,42 @@ Plateau addRandomTile(Plateau plateau) {
 	return plateau;
 }
 
-vector<int> sumX(vector<int> line) {
-	for (int i = 0; i < 3; i++) {
-		if (line[i] == line[i+1]) {
-			line[i] = line[i] + line[i+1];
-			line[i+1] = 0;
+// note: default parameters should only be assigned in the function declaration, i.e. in modele.h
+vector<int> sumX(vector<int> line, int dir/*=GAUCHE*/) {
+	if (dir == GAUCHE) {
+		for (int i = 0; i < 3; i++) {
+			if (line[i] == line[i+1]) {
+				line[i] = line[i] + line[i+1];
+				line[i+1] = 0;
+			}
+		}
+	}
+	else if (dir == DROITE) {
+		for (int i = 3; i > 0; i--) {
+			if (line[i] == line[i-1]) {
+				line[i] = line[i] + line[i-1];
+				line[i-1] = 0;
+			}
 		}
 	}
 	return line;
 }
 
-Column sumY(Column column){
-	for (int i = 0; i < 3; i++) {
-		if (column[i][0] == column[i+1][0]) {
-			column[i][0] = column[i][0] + column[i+1][0];
-			column[i+1][0] = 0;
+Column sumY(Column column, int dir/*=HAUT*/){
+	if (dir == HAUT) {
+		for (int i = 0; i < 3; i++) {
+			if (column[i][0] == column[i+1][0]) {
+				column[i][0] = column[i][0] + column[i+1][0];
+				column[i+1][0] = 0;
+			}
+		}
+	}
+	else if (dir == BAS) {
+		for (int i = 3; i > 0; i--) {
+			if (column[i][0] == column[i-1][0]) {
+				column[i][0] = column[i][0] + column[i-1][0];
+				column[i-1][0] = 0;
+			}
 		}
 	}
 	return column;
@@ -131,7 +152,7 @@ Plateau deplacementGauche(Plateau plateau) {
 	for (int i = 0; i < plateau.size(); i++) {
 		line = plateau[i];
 		line = organizeLeft(line);
-		line = sumX(line);
+		line = sumX(line, GAUCHE);
 		plateau[i] = organizeLeft(line);
 	}
 	return plateau;
@@ -142,7 +163,7 @@ Plateau deplacementDroite(Plateau plateau) {
 	for (int i = 0; i < plateau.size(); i++) {
 		line = plateau[i];
 		line = organizeRight(line);
-		line = sumX(line);
+		line = sumX(line, DROITE);
 		plateau[i] = organizeRight(line);
 	}
 	return plateau;
@@ -156,7 +177,7 @@ Plateau deplacementHaut(Plateau plateau) {
 			column[j][0] = plateau[j][i];
 		}
 		column = organizeUp(column);
-		column = sumY(column);
+		column = sumY(column, HAUT);
 		column = organizeUp(column);
 
 		for (int j = 0; j < plateau.size(); j++) {
@@ -174,7 +195,7 @@ Plateau deplacementBas(Plateau plateau) {
 			column[j][0] = plateau[j][i];
 		}
 		column = organizeDown(column);
-		column = sumY(column);
+		column = sumY(column, BAS);
 		column = organizeDown(column);
 
 		for (int j = 0; j < plateau.size(); j++) {

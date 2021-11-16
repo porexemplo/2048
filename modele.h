@@ -115,7 +115,7 @@ bool estGagnant(Plateau plateau);
  */
 int score(Plateau plateau);
 
-vector<int> sumX(vector<int> line);
+vector<int> sumX(vector<int> line, int dir=GAUCHE);
 
 /**
  * @brief organise les lignes du tableau vers la guache 
@@ -151,4 +151,4 @@ vector<int> organizeRight(vector<int> line) ;
 
 void timeInit();
 
-Column sumY(Column column);
+Column sumY(Column column, int dir=HAUT);

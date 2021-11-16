@@ -19,10 +19,22 @@ int main() {
 
     // Plateau plateau = plateauInitial();
 
-    for (auto line : addRandomTile(plateau)) {
-        for (int element : line) {
-            cout << element << " ";
-        }
-        cout << endl;
+    // vector<vector<int>> column = {{2},
+    //                               {2},
+    //                               {2},
+    //                               {0}};
+
+    vector<int> line = sumX({2, 2, 2, 2}, DROITE);
+
+    for (auto element : line) {
+        cout << element << " | ";
     }
+    cout << endl;
+
+    // for (auto line : sumY(column, HAUT)) {
+    //     for (int element : line) {
+    //         cout << element << " ";
+    //     }
+    //     cout << endl;
+    // }
 }
