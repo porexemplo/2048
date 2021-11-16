@@ -51,9 +51,9 @@ int tireDeuxOuQuatre() {
 }
 
 Plateau addRandomTile (Plateau plateau) {
-		int i = randomPosition(plateau)[0],
-			j = randomPosition(plateau)[1];
-		plateau[i][j] = tireDeuxOuQuatre();
+	int i = randomPosition(plateau)[0],
+		j = randomPosition(plateau)[1];
+	plateau[i][j] = tireDeuxOuQuatre();
 	return plateau;
 }
 
