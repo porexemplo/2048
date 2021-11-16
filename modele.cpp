@@ -35,12 +35,6 @@ vector<int> randomPosition(Plateau plateau) {
 			}
 		}
 	}
-	for (auto line : positions) {
-        for (int element : line) {
-            cout << element << " ";
-        }
-        cout << endl;
-	}
 	return positions[(rand() % positions.size())];
 }
 
