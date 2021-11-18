@@ -6,11 +6,12 @@ int main() {
     timeInit();
 
     Plateau plateau = {
-        {8, 8, 8, 8},
-        {8, 8, 8, 0},
+        {8, 8, 12, 8},
+        {8, 8, 256, 0},
         {8, 8, 8, 8},
         {0, 8, 8, 8},
     };
+    
 
     // vector<int> pos = randomPosition(plateau);
 
@@ -24,17 +25,20 @@ int main() {
     //                               {2},
     //                               {0}};
 
-    vector<int> line = sumX({2, 2, 2, 2}, DROITE);
+    // vector<int> line = sumX({2, 2, 2, 2}, DROITE);
 
-    for (auto element : line) {
-        cout << element << " | ";
-    }
-    cout << endl;
-
-    // for (auto line : sumY(column, HAUT)) {
-    //     for (int element : line) {
-    //         cout << element << " ";
-    //     }
-    //     cout << endl;
+    // for (auto element : line) {
+    //     cout << element << " | ";
     // }
+    // cout << endl;
+
+//     for (auto line : addRandomTile(plateau)) {
+//         for (int element : line) {
+//             cout << element << " ";
+//         }
+//         cout << endl;
+//     }
+
+    dessine(plateau);
+
 }

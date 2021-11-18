@@ -85,7 +85,7 @@ Plateau deplacement(Plateau plateau, int direction); // @all
  * @param g un plateau
  * @return string 
  */
-string dessine(Plateau g); // @all
+void dessine(Plateau g); // @all
 
 /**
  * @brief vérifie si la partie est terminée
@@ -152,3 +152,5 @@ vector<int> organizeRight(vector<int> line) ;
 void timeInit();
 
 Column sumY(Column column, int dir=HAUT);
+
+int lenInt(int number);

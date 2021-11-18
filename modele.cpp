@@ -3,6 +3,7 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
+#include <iomanip>
 #include "modele.h"
 
 using namespace std;
@@ -219,4 +220,25 @@ Plateau deplacement(Plateau plateau, int direction) {
 		plateau = deplacementBas(plateau);
 	}
 	return plateau;
+}
+
+int lenInt(int number) {
+	int len = 1;
+	for (int i = 10; number - i >= 0; i = i*10) {
+        len++;
+    }
+	return len;
+}
+
+void dessine(Plateau g) {
+	for (int i = 0; i < g.size(); i++) {
+		for (int j = 0; j < g[i].size(); j++) {
+			int printValue = g[i][j];
+			cout << setw(3 + lenInt(g[i][j]));
+			cout << "*";
+			cout << setw(3 - lenInt(g[i][j]));
+			cout <<g[i][j];
+		}
+	cout << endl;
+	}
 }
