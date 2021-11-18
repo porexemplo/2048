@@ -5,6 +5,7 @@
 #include <ctime>
 #include <iomanip>
 #include "modele.h"
+#include "center_class.cpp"
 
 using namespace std;
 
@@ -221,6 +222,8 @@ Plateau deplacement(Plateau plateau, int direction) {
 	if (direction == BAS) {
 		plateau = deplacementBas(plateau);
 	}
+
+	plateau = addRandomTile(plateau);
 	return plateau;
 }
 
@@ -232,15 +235,25 @@ int lenInt(int number) {
 	return len;
 }
 
+void starsDrawer() {
+	for (int i = 0; i < ((8 + 1)*4); i++)
+		cout << "*";
+	cout << endl;
+}
+
 void dessine(Plateau g) {
+	cout << endl;
 	for (int i = 0; i < g.size(); i++) {
+		starsDrawer();
 		for (int j = 0; j < g[i].size(); j++) {
 			int printValue = g[i][j];
-			cout << setw(3 + lenInt(g[i][j]));
+			// cout << setw(8);
 			cout << "*";
-			cout << setw(3 - lenInt(g[i][j]));
-			cout <<g[i][j];
+			cout << setw(8);
+			cout << centered(to_string(printValue));
+			// if (j == 3) cout << "*";
 		}
-	cout << endl;
+	cout << endl << endl;
 	}
+	starsDrawer();
 }

@@ -5,12 +5,26 @@ using namespace std;
 int main() {
     timeInit();
 
-    Plateau plateau = {
-        {8, 8, 12, 8},
-        {8, 8, 256, 0},
-        {8, 8, 2048, 8},
-        {2048, 8, 8, 8},
-    };
+    // Plateau plateau = {
+    //     {8, 8, 12, 8},
+    //     {8, 8, 256, 0},
+    //     {8, 8, 2048, 8},
+    //     {2048, 8, 8, 8},
+    // };
+
+    Plateau plateau = plateauInitial();
+
+    while (1) {
+        dessine(plateau);
+        cout << "Enter direction :";
+        char dir;
+        cin >> dir;
+
+        if (dir == 'i') plateau = deplacement(plateau, HAUT);
+        if (dir == 'k') plateau = deplacement(plateau, BAS);
+        if (dir == 'l') plateau = deplacement(plateau, DROITE);
+        if (dir == 'j') plateau = deplacement(plateau, GAUCHE);
+    }
     
 
     // vector<int> pos = randomPosition(plateau);
@@ -39,6 +53,6 @@ int main() {
 //         cout << endl;
 //     }
 
-    dessine(plateau);
+    // dessine(plateau);
 
 }
