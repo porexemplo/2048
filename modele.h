@@ -8,6 +8,8 @@ const int GAUCHE = 7,
           HAUT = 8,
           BAS = 2;
 
+const int displayWidth = 7;
+
 typedef vector< vector<int> > Plateau;
 typedef vector< vector<int> > Column;
 

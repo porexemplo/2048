@@ -9,7 +9,6 @@
 
 using namespace std;
 
-// this is a comment
 
 void timeInit() {
 	srand ((unsigned)time(0));
@@ -236,7 +235,7 @@ int lenInt(int number) {
 }
 
 void starsDrawer() {
-	for (int i = 0; i < ((8 + 1)*4); i++)
+	for (int i = 0; i < ((displayWidth + 1)*4); i++)
 		cout << "*";
 	cout << endl;
 }
@@ -247,13 +246,13 @@ void dessine(Plateau g) {
 		starsDrawer();
 		for (int j = 0; j < g[i].size(); j++) {
 			int printValue = g[i][j];
-			// cout << setw(8);
-			cout << "*";
-			cout << setw(8);
-			cout << centered(to_string(printValue));
-			// if (j == 3) cout << "*";
+			cout << "|" << setw(displayWidth) << centered(to_string(printValue));
 		}
-	cout << endl << endl;
+		cout << endl;
+		for (int j = 0; j < g[i].size(); j++) {
+			cout << "|" << setw(displayWidth) << centered(" ");
+		}
+		cout << endl;
 	}
 	starsDrawer();
 }
