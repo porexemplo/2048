@@ -8,6 +8,8 @@
 
 using namespace std;
 
+// this is a comment
+
 void timeInit() {
 	srand ((unsigned)time(0));
 }
