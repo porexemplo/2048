@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
 #include <cstdlib>
@@ -210,20 +211,25 @@ Plateau deplacementBas(Plateau plateau) {
 }
 
 Plateau deplacement(Plateau plateau, int direction) {
+	Plateau oldPlateau = plateau;
 	if (direction == GAUCHE) {
 		plateau = deplacementGauche(plateau);
 	}
-	if (direction == DROITE) {
+	else if (direction == DROITE) {
 		plateau = deplacementDroite(plateau);
 	}
-	if (direction == HAUT) {
+	else if (direction == HAUT) {
 		plateau = deplacementHaut(plateau);
 	}
-	if (direction == BAS) {
+	else if (direction == BAS) {
 		plateau = deplacementBas(plateau);
+	} else {
+		return plateau;
 	}
 
-	plateau = addRandomTile(plateau);
+	if (plateau != oldPlateau) {
+		plateau = addRandomTile(plateau);
+	}
 	return plateau;
 }
 
@@ -235,25 +241,35 @@ int lenInt(int number) {
 	return len;
 }
 
-void starsDrawer() {
+string starsDrawer() {
+	ostringstream flux;
 	for (int i = 0; i < ((displayWidth + 1)*4); i++)
-		cout << "*";
-	cout << endl;
+		flux << "*";
+	flux << endl;
+	return flux.str();
 }
 
-void dessine(Plateau g) {
-	cout << endl;
+string dessine(Plateau g) {
+	ostringstream flux;
+	flux << endl;
 	for (int i = 0; i < g.size(); i++) {
-		starsDrawer();
+		flux << starsDrawer();
 		for (int j = 0; j < g[i].size(); j++) {
 			int printValue = g[i][j];
-			cout << "|" << setw(displayWidth) << centered(to_string(printValue));
+			flux << "|" << setw(displayWidth) << centered(to_string(printValue));
 		}
-		cout << endl;
+		flux << endl;
 		for (int j = 0; j < g[i].size(); j++) {
-			cout << "|" << setw(displayWidth) << centered(" ");
+			flux << "|" << setw(displayWidth) << centered(" ");
 		}
-		cout << endl;
+		flux << endl;
 	}
-	starsDrawer();
+	flux << starsDrawer();
+	return flux.str();
 }
+
+bool estTermine(Plateau plateau){
+	vector<int> dir = { 2,4,7,8};
+	for( int i : dir)
+}
+

@@ -87,7 +87,7 @@ Plateau deplacement(Plateau plateau, int direction); // @all
  * @param g un plateau
  * @return string 
  */
-void dessine(Plateau g); // @all
+string dessine(Plateau g); // @all
 
 /**
  * @brief vérifie si la partie est terminée
@@ -99,6 +99,7 @@ void dessine(Plateau g); // @all
  * @return false s'il y a aucun mouvement possible
  */
 bool estTermine(Plateau plateau);
+
 
 /**
  * @brief vérifie si le joueur a gagné la partie
