@@ -12,7 +12,13 @@ La note 12/20 pourra être obtenue si:
 5. l’implantation respecte la structure imposée.
 6. toutes les fonctions sont spécifiées, documentées et testées.
 7. lors de l’affichage, les colonnes sont bien alignées, quelles que soient les valeurs de chaque tuile.
-
+8. le rapport est bien rédigé (orthographe...) et comprend : Une présentation du jeu && Une **documentation** de votre application.
+9. la soutenance est soignée et inclut une brève démonstration de votre jeu.
+ ### Niveau I
+ 1. rajouter un peu de couleur au console (1p)
+ 2. jouer en utilisant directement les flèches (haut, bas, gauche et droite) du clavier, sans avoir à appuyer sur entrée à chaque fois (2p)
+ 3. l'affichage d'un plateau se fasse à la place du plateau précédent -- refresh screen (2p)
+ 4. Calculer le score du jeu non pas avec une variable globale mais avec une structure de données qui associe un plateau `Plateau` à un score -- ncurses lib see subject (2p)
 ## Rappels GIT :
 1. `git pull` -> mise à jour des fichiers locaux.
 2. modifier les fichiers.
