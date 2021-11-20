@@ -243,7 +243,7 @@ int lenInt(int number) {
 
 string starsDrawer() {
 	ostringstream flux;
-	for (int i = 0; i < ((displayWidth + 1)*4); i++)
+	for (int i = 0; i < ((displayWidth + 1)*4 +1); i++)
 		flux << "*";
 	flux << endl;
 	return flux.str();
@@ -256,12 +256,13 @@ string dessine(Plateau g) {
 		flux << starsDrawer();
 		for (int j = 0; j < g[i].size(); j++) {
 			int printValue = g[i][j];
-			flux << "|" << setw(displayWidth) << centered(to_string(printValue));
+			flux << "*" << setw(displayWidth) << centered(to_string(printValue));
 		}
-		flux << endl;
-		for (int j = 0; j < g[i].size(); j++) {
-			flux << "|" << setw(displayWidth) << centered(" ");
-		}
+		flux << "*";
+		//flux << endl;
+		//for (int j = 0; j < g[i].size(); j++) {
+			//flux << "*" << setw(displayWidth) << centered(" ");
+		//}
 		flux << endl;
 	}
 	flux << starsDrawer();
@@ -270,6 +271,32 @@ string dessine(Plateau g) {
 
 bool estTermine(Plateau plateau){
 	vector<int> dir = { 2,4,7,8};
-	for( int i : dir)
+	for( int i : dir){
+		if ( plateau != deplacement( plateau, i)){
+			return false;
+		}
+	}
+	return true;
 }
+
+bool estGagnant(Plateau plateau){
+	for(int i=0; i<plateau.size(); i++){
+		for (int j =0; j< plateau[i].size(); j++){
+			if (plateau[i][j] == 2048){
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+/*
+int score(Plateau plateau){
+	int score = 0;
+	while (not est terminée){
+		for (int i =0; i<plateau.size(); i++)
+				if (plateau[i]= sumX(plateau [i], 7) 
+			
+	*/	
+	
 

@@ -6,9 +6,9 @@ int main() {
     timeInit();
 
     Plateau plateau = plateauInitial();
+    cout << dessine(plateau);
 
-    while (true /*estTermine*/) {
-        cout << dessine(plateau);
+    while(not estTermine(plateau) or not estGagnant(plateau)) {
         string dir;
         cout << "Entrer dir : ";
         cin >> dir;
@@ -24,6 +24,7 @@ int main() {
         if (dir == "k") {
             plateau = deplacement(plateau, BAS);
         }
+        cout << dessine(plateau);
     }
 
 }
