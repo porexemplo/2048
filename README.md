@@ -1,7 +1,5 @@
 # Jeu 2048
-Pour compiler le jeu : `g++ main_game.cpp -o main_game modele.cpp`
-
-Pour exécuter --windows :  `main_game.exe`
+Compiler et exécuter --windows :  `g++ main_game.cpp -o main_game modele.cpp && main_game.exe`
 
 Compiler et exécuter -- linux : `g++ main_game.cpp -o main_game modele.cpp && ./main_game`
 
