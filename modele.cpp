@@ -58,11 +58,12 @@ Plateau addRandomTile(Plateau plateau) {
 }
 
 // note: default parameters should only be assigned in the function declaration, i.e. in modele.h
-vector<int> sumX(vector<int> line, int dir/*=GAUCHE*/) {
+vector<int> sumX(vector<int> line, int dir/*=GAUCHE*/, int score) {
 	if (dir == GAUCHE) {
 		for (int i = 0; i < 3; i++) {
 			if (line[i] == line[i+1]) {
 				line[i] = line[i] + line[i+1];
+				score = score + line[i];
 				line[i+1] = 0;
 			}
 		}
@@ -71,18 +72,21 @@ vector<int> sumX(vector<int> line, int dir/*=GAUCHE*/) {
 		for (int i = 3; i > 0; i--) {
 			if (line[i] == line[i-1]) {
 				line[i] = line[i] + line[i-1];
+				score = score + line[i];
 				line[i-1] = 0;
 			}
 		}
 	}
+	line.push_back(score);
 	return line;
 }
 
-Column sumY(Column column, int dir/*=HAUT*/){
+Column sumY(Column column, int dir/*=HAUT*/, int score) {
 	if (dir == HAUT) {
 		for (int i = 0; i < 3; i++) {
 			if (column[i][0] == column[i+1][0]) {
 				column[i][0] = column[i][0] + column[i+1][0];
+				score = score + column[i][0];
 				column[i+1][0] = 0;
 			}
 		}
@@ -91,10 +95,12 @@ Column sumY(Column column, int dir/*=HAUT*/){
 		for (int i = 3; i > 0; i--) {
 			if (column[i][0] == column[i-1][0]) {
 				column[i][0] = column[i][0] + column[i-1][0];
+				score = score + column[i][0];
 				column[i-1][0] = 0;
 			}
 		}
 	}
+	column.push_back({score});
 	return column;
 }
 
@@ -152,7 +158,7 @@ Column organizeDown(Column column) {
 	return newColumn;
 }
 
-Plateau deplacementGauche(Plateau plateau) {
+Plateau deplacementGauche(Plateau plateau, int score) {
 	vector<int> line;
 	for (int i = 0; i < plateau.size(); i++) {
 		line = plateau[i];
@@ -163,7 +169,7 @@ Plateau deplacementGauche(Plateau plateau) {
 	return plateau;
 }
 
-Plateau deplacementDroite(Plateau plateau) {
+Plateau deplacementDroite(Plateau plateau, int score) {
 	vector<int> line;
 	for (int i = 0; i < plateau.size(); i++) {
 		line = plateau[i];
@@ -174,7 +180,7 @@ Plateau deplacementDroite(Plateau plateau) {
 	return plateau;
 }
 
-Plateau deplacementHaut(Plateau plateau) {
+Plateau deplacementHaut(Plateau plateau, int score) {
 	Column column (4);
 	for (int i = 0; i < plateau.size(); i++) {
 		for (int j = 0; j < plateau.size(); j++) {
@@ -192,7 +198,7 @@ Plateau deplacementHaut(Plateau plateau) {
 	return plateau;
 }
 
-Plateau deplacementBas(Plateau plateau) {
+Plateau deplacementBas(Plateau plateau, int score) {
 	Column column (4);
 	for (int i = 0; i < plateau.size(); i++) {
 		for (int j = 0; j < plateau.size(); j++) {
@@ -210,27 +216,30 @@ Plateau deplacementBas(Plateau plateau) {
 	return plateau;
 }
 
-Plateau deplacement(Plateau plateau, int direction) {
+Canvas deplacement(Canvas canvas, int direction) {
+	Plateau plateau = canvas.plateau;
+	int score = canvas.score;
+
 	Plateau oldPlateau = plateau;
 	if (direction == GAUCHE) {
-		plateau = deplacementGauche(plateau);
+		plateau = deplacementGauche(canvas);
 	}
 	else if (direction == DROITE) {
-		plateau = deplacementDroite(plateau);
+		plateau = deplacementDroite(canvas);
 	}
 	else if (direction == HAUT) {
-		plateau = deplacementHaut(plateau);
+		plateau = deplacementHaut(canvas);
 	}
 	else if (direction == BAS) {
-		plateau = deplacementBas(plateau);
+		plateau = deplacementBas(canvas);
 	} else {
-		return plateau;
+		return canvas;
 	}
 
 	if (plateau != oldPlateau) {
-		plateau = addRandomTile(plateau);
+		canvas.plateau = addRandomTile(plateau);
 	}
-	return plateau;
+	return canvas;
 }
 
 int lenInt(int number) {
@@ -269,17 +278,18 @@ string dessine(Plateau g) {
 	return flux.str();
 }
 
-bool estTermine(Plateau plateau){
+bool estTermine(Canvas canvas){
+	Plateau plateau = canvas.plateau;
 	vector<int> dir = { 2,4,7,8};
 	for( int i : dir){
-		if ( plateau != deplacement( plateau, i)){
+		if ( plateau != deplacement(canvas, i).plateau){
 			return false;
 		}
 	}
 	return true;
 }
 
-bool estGagnant(Plateau plateau){
+bool estGagnant(Plateau plateau) {
 	for(int i=0; i<plateau.size(); i++){
 		for (int j =0; j< plateau[i].size(); j++){
 			if (plateau[i][j] == 2048){
@@ -289,14 +299,3 @@ bool estGagnant(Plateau plateau){
 	}
 	return false;
 }
-
-/*
-int score(Plateau plateau){
-	int score = 0;
-	while (not est terminée){
-		for (int i =0; i<plateau.size(); i++)
-				if (plateau[i]= sumX(plateau [i], 7) 
-			
-	*/	
-	
-

@@ -10,8 +10,15 @@ const int GAUCHE = 7,
 
 const int displayWidth = 7;
 
-typedef vector< vector<int> > Plateau;
 typedef vector< vector<int> > Column;
+typedef vector< vector<int> > Plateau;
+
+class Canvas {
+public:
+    Plateau plateau;
+    int score;
+};
+
 
 /**
  * @returns un plateau vide
@@ -46,7 +53,7 @@ int tireDeuxOuQuatre();
  * @param plateau 
  * @return ** Plateau après le déplacement
  */
-Plateau deplacementGauche(Plateau plateau);
+Plateau deplacementGauche(Canvas canvas);
 
 /**
  * @brief déplacement vers la droite suivant les règles du jeu; renvoie un nouveau plateau
@@ -54,7 +61,7 @@ Plateau deplacementGauche(Plateau plateau);
  * @param plateau 
  * @return ** Plateau après le déplacement
  */
-Plateau deplacementDroite(Plateau plateau); // @asma
+Plateau deplacementDroite(Canvas canvas); // @asma
 
 /**
  * @brief déplacement vers le haut suivant les règles du jeu; renvoie un nouveau plateau
@@ -62,7 +69,7 @@ Plateau deplacementDroite(Plateau plateau); // @asma
  * @param plateau 
  * @return ** Plateau après le déplacement
  */
-Plateau deplacementHaut(Plateau plateau); // @asma
+Plateau deplacementHaut(Canvas canvas); // @asma
 
 /**
  * @brief déplacement vers le bas suivant les règles du jeu; renvoie un nouveau plateau
@@ -70,7 +77,7 @@ Plateau deplacementHaut(Plateau plateau); // @asma
  * @param plateau 
  * @return ** Plateau après le déplacement
  */
-Plateau deplacementBas(Plateau plateau); // @redwane
+Plateau deplacementBas(Canvas canvas); // @redwane
 
 /**
  * @brief effectue un déplacement en éxecutant l'une des fonctions de déplacement
@@ -79,7 +86,7 @@ Plateau deplacementBas(Plateau plateau); // @redwane
  * @param direction un entier parmi {7, 4, 8, 2} - voir variables const.
  * @return Plateau après déplacement
  */
-Plateau deplacement(Plateau plateau, int direction); // @all
+Canvas deplacement(Canvas canvas, int direction); // @all
 
 /**
  * @brief affiche le plateau g au console
@@ -110,15 +117,7 @@ bool estTermine(Plateau plateau);
  */
 bool estGagnant(Plateau plateau);
 
-/**
- * @brief détermine le score de la partie
- * 
- * @param plateau 
- * @return int score de la partie.
- */
-int score(Plateau plateau);
-
-vector<int> sumX(vector<int> line, int dir=GAUCHE);
+vector<int> sumX(Canvas canvas, int dir=GAUCHE);
 
 /**
  * @brief organise les lignes du tableau vers la guache 
@@ -154,6 +153,6 @@ vector<int> organizeRight(vector<int> line) ;
 
 void timeInit();
 
-Column sumY(Column column, int dir=HAUT);
+Column sumY(Canvas canvas, int dir=HAUT);
 
 int lenInt(int number);
