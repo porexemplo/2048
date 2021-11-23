@@ -22,7 +22,7 @@ int main() {
 
     // ISSUE not estTermine(plateau) or not estGagnant(plateau) -> returns true if loser
     // ISSUE game continues even if estGangnant(plateau)
-    while(not estTermine(plateau)) {
+    while(not estTermine(plateau) or not estGagnant(plateau)) {
         string dir;
         cout << "Entrer dir : ";
         cin >> dir;
