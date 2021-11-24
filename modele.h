@@ -15,6 +15,8 @@ const int GAUCHE = 7,
           HAUT = 8,
           BAS = 2;
 
+int temp;
+
 const int displayWidth = 7;
 
 typedef vector< vector<int> > Plateau;

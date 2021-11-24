@@ -33,8 +33,8 @@ Plateau plateauInitial() {
 
 vector<int> randomPosition(Plateau plateau) {
 	vector<vector<int>> positions;
-	for (int i = 0; i < plateau.size(); i++) {
-		for (int j = 0; j < plateau.size(); j++) {
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++) {
 			if (plateau[i][j] == 0) {
 				positions.push_back({i, j});
 			}
@@ -154,18 +154,20 @@ Column organizeDown(Column column) {
 
 Plateau deplacementGauche(Plateau plateau) {
 	vector<int> line;
-	for (int i = 0; i < plateau.size(); i++) {
+	temp = plateau[4][0];
+	for (int i = 0; i < 4; i++) {
 		line = plateau[i];
 		line = organizeLeft(line);
 		line = sumX(line, GAUCHE);
 		plateau[i] = organizeLeft(line);
 	}
+	plateau[4][0] = temp;
 	return plateau;
 }
 
 Plateau deplacementDroite(Plateau plateau) {
 	vector<int> line;
-	for (int i = 0; i < plateau.size(); i++) {
+	for (int i = 0; i < 4; i++) {
 		line = plateau[i];
 		line = organizeRight(line);
 		line = sumX(line, DROITE);
@@ -176,8 +178,8 @@ Plateau deplacementDroite(Plateau plateau) {
 
 Plateau deplacementHaut(Plateau plateau) {
 	Column column (4);
-	for (int i = 0; i < plateau.size(); i++) {
-		for (int j = 0; j < plateau.size(); j++) {
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++) {
 			column[j] = vector<int> (1);
 			column[j][0] = plateau[j][i];
 		}
@@ -185,7 +187,7 @@ Plateau deplacementHaut(Plateau plateau) {
 		column = sumY(column, HAUT);
 		column = organizeUp(column);
 
-		for (int j = 0; j < plateau.size(); j++) {
+		for (int j = 0; j < 4; j++) {
 			plateau[j][i] = column[j][0];
 		}
 	}
@@ -194,8 +196,8 @@ Plateau deplacementHaut(Plateau plateau) {
 
 Plateau deplacementBas(Plateau plateau) {
 	Column column (4);
-	for (int i = 0; i < plateau.size(); i++) {
-		for (int j = 0; j < plateau.size(); j++) {
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++) {
 			column[j] = vector<int> (1);
 			column[j][0] = plateau[j][i];
 		}
@@ -203,7 +205,7 @@ Plateau deplacementBas(Plateau plateau) {
 		column = sumY(column, BAS);
 		column = organizeDown(column);
 
-		for (int j = 0; j < plateau.size(); j++) {
+		for (int j = 0; j < 4; j++) {
 			plateau[j][i] = column[j][0];
 		}
 	}
@@ -252,18 +254,13 @@ string starsDrawer() {
 string dessine(Plateau g) {
 	ostringstream flux;
 	flux << endl;
-	for (int i = 0; i < g.size(); i++) {
+	for (int i = 0; i < 4; i++) {
 		flux << starsDrawer();
-		for (int j = 0; j < g[i].size(); j++) {
+		for (int j = 0; j < 4; j++) {
 			int printValue = g[i][j];
 			flux << "*" << setw(displayWidth) << centered(to_string(printValue));
 		}
-		flux << "*";
-		//flux << endl;
-		//for (int j = 0; j < g[i].size(); j++) {
-			//flux << "*" << setw(displayWidth) << centered(" ");
-		//}
-		flux << endl;
+		flux << "*" << endl;
 	}
 	flux << starsDrawer();
 	return flux.str();
@@ -280,8 +277,8 @@ bool estTermine(Plateau plateau){
 }
 
 bool estGagnant(Plateau plateau){
-	for(int i=0; i<plateau.size(); i++){
-		for (int j =0; j< plateau[i].size(); j++){
+	for(int i=0; i<4; i++){
+		for (int j =0; j<4; j++){
 			if (plateau[i][j] == 2048){
 				return true;
 			}
@@ -294,7 +291,7 @@ bool estGagnant(Plateau plateau){
 int score(Plateau plateau){
 	int score = 0;
 	while (not est terminée){
-		for (int i =0; i<plateau.size(); i++)
+		for (int i =0; i<4; i++)
 				if (plateau[i]= sumX(plateau [i], 7) 
 			
 	*/	
