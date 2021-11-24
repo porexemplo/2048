@@ -3,6 +3,13 @@
 #include <string>
 using namespace std;
 
+// class Plateau: public vector<vector<int>> {
+//     // using vector<vector<int>>::
+// public:
+//     int score;
+//     // vector<vector<int>> Plateau;
+// };
+
 const int GAUCHE = 7,
           DROITE = 4,
           HAUT = 8,

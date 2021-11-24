@@ -20,9 +20,7 @@ int main() {
     Plateau plateau = plateauInitial();
     cout << dessine(plateau);
 
-    // ISSUE not estTermine(plateau) or not estGagnant(plateau) -> returns true if loser
-    // ISSUE game continues even if estGangnant(plateau)
-    while(not estTermine(plateau) or not estGagnant(plateau)) {
+    while(not estTermine(plateau)) {
         string dir;
         cout << "Entrer dir : ";
         cin >> dir;
