@@ -249,21 +249,24 @@ string starsDrawer() {
 	return flux.str();
 }
 
+string printValueToString(int printValue) {
+	ostringstream flux;
+	flux << "\033[31;1;4m";
+	flux << to_string(printValue);
+	flux << "\033[0m";
+	return to_string(flux);
+}
+
 string dessine(Plateau g) {
 	ostringstream flux;
 	flux << endl;
 	for (int i = 0; i < g.size(); i++) {
 		flux << starsDrawer();
 		for (int j = 0; j < g[i].size(); j++) {
-			int printValue = g[i][j];
-			flux << "*" << setw(displayWidth) << centered(to_string(printValue));
+			string printValue = printValueToString(g[i][j]);
+			flux << "*" << setw(displayWidth) << centered(printValue);
 		}
-		flux << "*";
-		//flux << endl;
-		//for (int j = 0; j < g[i].size(); j++) {
-			//flux << "*" << setw(displayWidth) << centered(" ");
-		//}
-		flux << endl;
+		flux << "*" << endl;
 	}
 	flux << starsDrawer();
 	return flux.str();
