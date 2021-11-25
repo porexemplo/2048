@@ -3,12 +3,23 @@
 #include <string>
 using namespace std;
 
-// class Plateau: public vector<vector<int>> {
-//     // using vector<vector<int>>::
-// public:
-//     int score;
-//     // vector<vector<int>> Plateau;
-// };
+class Plateau: public vector<vector<int>> {
+public:
+    using vector::vector;
+    int score;
+};
+
+class Column: public vector<vector<int>> {
+public:
+    using vector::vector;
+    int score;
+};
+
+class Line: public vector<int> {
+public:
+    using vector::vector;
+    int score;
+};
 
 const int GAUCHE = 7,
           DROITE = 4,
@@ -17,8 +28,8 @@ const int GAUCHE = 7,
 
 const int displayWidth = 7;
 
-typedef vector< vector<int> > Plateau;
-typedef vector< vector<int> > Column;
+// typedef vector< vector<int> > Plateau;
+// typedef vector< vector<int> > Column;
 
 /**
  * @returns un plateau vide

@@ -7,7 +7,7 @@
 #include <iomanip>
 #include "modele.h"
 #include "center_class.cpp"
-#include <SFML/Graphics.hpp>
+// #include <SFML/Graphics.hpp>
 
 using namespace std;
 
@@ -57,8 +57,16 @@ Plateau addRandomTile(Plateau plateau) {
 	return plateau;
 }
 
+Line toLine(vector<int> convertVector) {
+	Line returnLine (convertVector.size());
+	for (int i = 0; i < convertVector.size(); i++) {
+		returnLine[i] = convertVector[i];
+	}
+	return returnLine;
+}
+
 // note: default parameters should only be assigned in the function declaration, i.e. in modele.h
-vector<int> sumX(vector<int> line, int dir/*=GAUCHE*/) {
+Line sumX(Line line, int dir/*=GAUCHE*/) {
 	if (dir == GAUCHE) {
 		for (int i = 0; i < 3; i++) {
 			if (line[i] == line[i+1]) {
@@ -98,8 +106,8 @@ Column sumY(Column column, int dir/*=HAUT*/){
 	return column;
 }
 
-vector<int> organizeLeft(vector<int> line) {
-	vector<int> newLine = {0, 0, 0, 0};
+Line organizeLeft(Line line) {
+	Line newLine = {0, 0, 0, 0};
 	int position = 0;
 	for (int i = 0; i < 4; i++) {
 		if (line[i] != 0) {
@@ -110,8 +118,8 @@ vector<int> organizeLeft(vector<int> line) {
 	return newLine;
 }
 
-vector<int> organizeRight(vector<int> line) {
-	vector<int> newLine = {0, 0, 0, 0};
+Line organizeRight(Line line) {
+	Line newLine = {0, 0, 0, 0};
 	int position = 3;
 	for (int i = 3; i >= 0 ; i--){
 		if (line[i] != 0 ){
@@ -153,22 +161,26 @@ Column organizeDown(Column column) {
 }
 
 Plateau deplacementGauche(Plateau plateau) {
-	vector<int> line;
+	Line line;
 	for (int i = 0; i < plateau.size(); i++) {
-		line = plateau[i];
+		line = toLine(plateau[i]);
 		line = organizeLeft(line);
+		line.score = plateau.score;
 		line = sumX(line, GAUCHE);
+		plateau.score = line.score;
 		plateau[i] = organizeLeft(line);
 	}
 	return plateau;
 }
 
 Plateau deplacementDroite(Plateau plateau) {
-	vector<int> line;
+	Line line;
 	for (int i = 0; i < plateau.size(); i++) {
-		line = plateau[i];
+		line = toLine(plateau[i]);
 		line = organizeRight(line);
+		line.score = plateau.score;
 		line = sumX(line, DROITE);
+		plateau.score = line.score;
 		plateau[i] = organizeRight(line);
 	}
 	return plateau;
@@ -182,7 +194,9 @@ Plateau deplacementHaut(Plateau plateau) {
 			column[j][0] = plateau[j][i];
 		}
 		column = organizeUp(column);
+		column.score = plateau.score;
 		column = sumY(column, HAUT);
+		plateau.score = column.score;
 		column = organizeUp(column);
 
 		for (int j = 0; j < plateau.size(); j++) {
@@ -200,7 +214,9 @@ Plateau deplacementBas(Plateau plateau) {
 			column[j][0] = plateau[j][i];
 		}
 		column = organizeDown(column);
+		column.score = plateau.score;
 		column = sumY(column, BAS);
+		plateau.score = column.score;
 		column = organizeDown(column);
 
 		for (int j = 0; j < plateau.size(); j++) {
