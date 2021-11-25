@@ -6,6 +6,7 @@
 #include <ctime>
 #include <iomanip>
 #include "modele.h"
+#include "color.h"
 #include "center_class.cpp"
 // #include <SFML/Graphics.hpp>
 
@@ -283,7 +284,14 @@ string dessine(Plateau g) {
 		flux << starsDrawer();
 		for (int j = 0; j < g[i].size(); j++) {
 			int printValue = g[i][j];
-			flux << "*" << setw(displayWidth) << centered(to_string(printValue));
+			flux << "*" << get_color_of(printValue)
+				 << setw(displayWidth);
+			if (printValue) {
+				flux << centered(to_string(printValue))
+				     << "\033[0m";
+			} else {
+				flux << centered(" ");
+			}
 		}
 		flux << "*";
 		flux << endl;
