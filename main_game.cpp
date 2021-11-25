@@ -26,21 +26,15 @@ int main() {
         cin >> dir;
         if (dir == "l") {
             plateau = deplacement(plateau, DROITE);
-            cout << plateau[4][0];
-            
         }
         if (dir == "j") {
             plateau = deplacement(plateau, GAUCHE);
-            cout << plateau[4][0];
-        } 
-    
+        }
         if (dir == "i") {
             plateau = deplacement(plateau, HAUT);
-            cout << plateau[4][0];
         }
         if (dir == "k") {
             plateau = deplacement(plateau, BAS);
-            cout << plateau[4][0];
         }
         refreshConsole();
         cout << dessine(plateau);

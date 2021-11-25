@@ -7,7 +7,7 @@
 #include <iomanip>
 #include "modele.h"
 #include "center_class.cpp"
-//#include <SFML/Graphics.hpp>
+#include <SFML/Graphics.hpp>
 
 using namespace std;
 
@@ -17,7 +17,7 @@ void timeInit() {
 }
 
 Plateau plateauVide() {
-	Plateau plaVide (5);
+	Plateau plaVide (4);
 	for (int i = 0; i < 4; i++) {
 		plaVide[i] = {0, 0, 0, 0};
 	}
@@ -63,7 +63,6 @@ vector<int> sumX(vector<int> line, int dir/*=GAUCHE*/) {
 		for (int i = 0; i < 3; i++) {
 			if (line[i] == line[i+1]) {
 				line[i] = line[i] + line[i+1];
-				temp = temp + line[i];
 				line[i+1] = 0;
 			}
 		}
@@ -72,7 +71,6 @@ vector<int> sumX(vector<int> line, int dir/*=GAUCHE*/) {
 		for (int i = 3; i > 0; i--) {
 			if (line[i] == line[i-1]) {
 				line[i] = line[i] + line[i-1];
-				temp = temp + line[i];
 				line[i-1] = 0;
 			}
 		}
@@ -85,7 +83,6 @@ Column sumY(Column column, int dir/*=HAUT*/){
 		for (int i = 0; i < 3; i++) {
 			if (column[i][0] == column[i+1][0]) {
 				column[i][0] = column[i][0] + column[i+1][0];
-				temp = temp + column[i][0];
 				column[i+1][0] = 0;
 			}
 		}
@@ -94,7 +91,6 @@ Column sumY(Column column, int dir/*=HAUT*/){
 		for (int i = 3; i > 0; i--) {
 			if (column[i][0] == column[i-1][0]) {
 				column[i][0] = column[i][0] + column[i-1][0];
-				temp = temp + column[i][0];
 				column[i-1][0] = 0;
 			}
 		}
@@ -171,21 +167,17 @@ Plateau deplacementGauche(Plateau plateau) {
 
 Plateau deplacementDroite(Plateau plateau) {
 	vector<int> line;
-	temp = plateau[4][0];
 	for (int i = 0; i < 4; i++) {
 		line = plateau[i];
 		line = organizeRight(line);
 		line = sumX(line, DROITE);
 		plateau[i] = organizeRight(line);
 	}
-	temp = plateau[4][0];
-	
 	return plateau;
 }
 
 Plateau deplacementHaut(Plateau plateau) {
 	Column column (4);
-	temp = column[4][0];
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 4; j++) {
 			column[j] = vector<int> (1);
@@ -199,13 +191,11 @@ Plateau deplacementHaut(Plateau plateau) {
 			plateau[j][i] = column[j][0];
 		}
 	}
-	temp = column[4][0];
 	return plateau;
 }
 
 Plateau deplacementBas(Plateau plateau) {
 	Column column (4);
-	temp = column[4][0];
 	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 4; j++) {
 			column[j] = vector<int> (1);
@@ -219,7 +209,6 @@ Plateau deplacementBas(Plateau plateau) {
 			plateau[j][i] = column[j][0];
 		}
 	}
-	temp = column[4][0];
 	return plateau;
 }
 
@@ -227,19 +216,15 @@ Plateau deplacement(Plateau plateau, int direction) {
 	Plateau oldPlateau = plateau;
 	if (direction == GAUCHE) {
 		plateau = deplacementGauche(plateau);
-		cout << temp;
 	}
 	else if (direction == DROITE) {
 		plateau = deplacementDroite(plateau);
-		cout << temp;
 	}
 	else if (direction == HAUT) {
 		plateau = deplacementHaut(plateau);
-		cout << temp;
 	}
 	else if (direction == BAS) {
 		plateau = deplacementBas(plateau);
-		cout << temp;
 	} else {
 		return plateau;
 	}
@@ -276,7 +261,6 @@ string dessine(Plateau g) {
 			flux << "*" << setw(displayWidth) << centered(to_string(printValue));
 		}
 		flux << "*" << endl;
-		
 	}
 	flux << starsDrawer();
 	return flux.str();
@@ -303,7 +287,13 @@ bool estGagnant(Plateau plateau){
 	return false;
 }
 
-
-	
+/*
+int score(Plateau plateau){
+	int score = 0;
+	while (not est terminée){
+		for (int i =0; i<4; i++)
+				if (plateau[i]= sumX(plateau [i], 7) 
+			
+	*/	
 	
 
