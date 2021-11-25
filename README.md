@@ -20,7 +20,7 @@ La note 12/20 pourra être obtenue si:
 - [x] l'affichage d'un plateau se fait à la place du plateau précédent -- refresh screen (2p)
 - [x] Calculer le score du jeu non pas avec une variable globale mais avec une structure de données qui associe un plateau `Plateau` à un score -- ncurses lib see subject (2p)
 ### Niveau II
-- [ ] créer un `makefile` **simple** pour la compilation (2p)
+- [ ] créer un `makefile` **simple** pour la compilation (2p) // [Makefiles](https://stackoverflow.com/questions/2481269/how-to-make-a-simple-c-makefile) sur Stackoverflow
 - [x] utiliser un "version control system" comme `git` (1p)
 ## Rappels GIT :
 1. `git pull` -> mise à jour des fichiers locaux.
