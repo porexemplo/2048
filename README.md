@@ -1,7 +1,7 @@
 # Jeu 2048
-Compiler et exécuter --windows :  `g++ main_game.cpp -o main_game modele.cpp && main_game.exe`
+Compiler et exécuter --windows :  `g++ main_game.cpp -o main_game modele.cpp color.cpp && main_game.exe`
 
-Compiler et exécuter -- linux : `g++ main_game.cpp -o main_game modele.cpp && ./main_game`
+Compiler et exécuter -- linux : `g++ main_game.cpp -o main_game modele.cpp color.cpp && ./main_game`
 
 ## Barême
 La note 12/20 pourra être obtenue si:
