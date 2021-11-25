@@ -28,6 +28,7 @@ Plateau plateauInitial() {
 	Plateau plateau = plateauVide();
 	plateau = addRandomTile(plateau);
 	plateau = addRandomTile(plateau);
+	plateau.score = 0;
 	return plateau;
 }
 
@@ -57,6 +58,12 @@ Plateau addRandomTile(Plateau plateau) {
 	return plateau;
 }
 
+/**
+ * @brief Type conversion function from vector<int> to Line type
+ * 
+ * @param convertVector 
+ * @return Line 
+ */
 Line toLine(vector<int> convertVector) {
 	Line returnLine (convertVector.size());
 	for (int i = 0; i < convertVector.size(); i++) {
@@ -71,6 +78,7 @@ Line sumX(Line line, int dir/*=GAUCHE*/) {
 		for (int i = 0; i < 3; i++) {
 			if (line[i] == line[i+1]) {
 				line[i] = line[i] + line[i+1];
+				line.score += line[i];
 				line[i+1] = 0;
 			}
 		}
@@ -79,6 +87,7 @@ Line sumX(Line line, int dir/*=GAUCHE*/) {
 		for (int i = 3; i > 0; i--) {
 			if (line[i] == line[i-1]) {
 				line[i] = line[i] + line[i-1];
+				line.score += line[i];
 				line[i-1] = 0;
 			}
 		}
@@ -91,6 +100,7 @@ Column sumY(Column column, int dir/*=HAUT*/){
 		for (int i = 0; i < 3; i++) {
 			if (column[i][0] == column[i+1][0]) {
 				column[i][0] = column[i][0] + column[i+1][0];
+				column.score += column[i][0];
 				column[i+1][0] = 0;
 			}
 		}
@@ -99,6 +109,7 @@ Column sumY(Column column, int dir/*=HAUT*/){
 		for (int i = 3; i > 0; i--) {
 			if (column[i][0] == column[i-1][0]) {
 				column[i][0] = column[i][0] + column[i-1][0];
+				column.score += column[i][0];
 				column[i-1][0] = 0;
 			}
 		}
@@ -267,7 +278,7 @@ string starsDrawer() {
 
 string dessine(Plateau g) {
 	ostringstream flux;
-	flux << endl;
+	flux << endl << "Score : " << g.score << endl << endl;
 	for (int i = 0; i < g.size(); i++) {
 		flux << starsDrawer();
 		for (int j = 0; j < g[i].size(); j++) {
@@ -275,10 +286,6 @@ string dessine(Plateau g) {
 			flux << "*" << setw(displayWidth) << centered(to_string(printValue));
 		}
 		flux << "*";
-		//flux << endl;
-		//for (int j = 0; j < g[i].size(); j++) {
-			//flux << "*" << setw(displayWidth) << centered(" ");
-		//}
 		flux << endl;
 	}
 	flux << starsDrawer();
@@ -305,14 +312,3 @@ bool estGagnant(Plateau plateau){
 	}
 	return false;
 }
-
-/*
-int score(Plateau plateau){
-	int score = 0;
-	while (not est terminée){
-		for (int i =0; i<plateau.size(); i++)
-				if (plateau[i]= sumX(plateau [i], 7) 
-			
-	*/	
-	
-
