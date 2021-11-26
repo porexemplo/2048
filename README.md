@@ -29,6 +29,7 @@ La note 12/20 pourra être obtenue si:
 2. modifier les fichiers.
 3. `git commit -a -m "un message des modifications"`
 4. `git push` -> téleverser les fichiers vers Github.
+5. `git stash` -> annuler les modifications.
 
 ----
 
