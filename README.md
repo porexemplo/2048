@@ -37,3 +37,6 @@ La note 12/20 pourra être obtenue si:
 
 ![image](https://user-images.githubusercontent.com/62790552/141335661-cbe08238-7b3c-4908-9e67-6bf23a776b08.png)
 source: https://www.baeldung.com/
+
+Usefull resources :
+Arrow keys : https://stackoverflow.com/questions/24708700/c-detect-when-user-presses-arrow-key
