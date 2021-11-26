@@ -272,7 +272,7 @@ int lenInt(int number) {
 string starsDrawer() {
 	ostringstream flux;
 	for (int i = 0; i < ((displayWidth + 1)*4 +1); i++)
-		flux << "*";
+		flux << get_color_of(0) << "*" << "\033[0m";
 	flux << endl;
 	return flux.str();
 }
