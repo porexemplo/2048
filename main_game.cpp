@@ -23,19 +23,24 @@ int main() {
     while(not estTermine(plateau)) {
         string dir;
         cout << "Entrer dir : ";
-        cin >> dir;
-        if (dir == "l") {
-            plateau = deplacement(plateau, DROITE);
+        
+        int userInput = 0;
+
+        switch((userInput = getch())) {
+            case UP:
+                plateau = deplacement(plateau, HAUT);
+                break;
+            case DOWN:
+                plateau = deplacement(plateau, BAS);
+                break;
+            case LEFT:
+                plateau = deplacement(plateau, GAUCHE);
+                break;
+            case RIGHT:
+                plateau = deplacement(plateau, DROITE);
+                break;
         }
-        if (dir == "j") {
-            plateau = deplacement(plateau, GAUCHE);
-        }
-        if (dir == "i") {
-            plateau = deplacement(plateau, HAUT);
-        }
-        if (dir == "k") {
-            plateau = deplacement(plateau, BAS);
-        }
+
         refreshConsole();
         cout << dessine(plateau);
     }

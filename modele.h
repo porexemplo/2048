@@ -2,7 +2,13 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <conio.h>
 using namespace std;
+
+#define LEFT 75
+#define RIGHT 77
+#define UP 72
+#define DOWN 80
 
 class Plateau: public vector<vector<int>> {
 public:
