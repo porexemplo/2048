@@ -3,6 +3,8 @@ Compiler et exécuter --windows :  `g++ main_game.cpp -o main_game modele.cpp co
 
 Compiler et exécuter -- linux : `g++ main_game.cpp -o main_game modele.cpp color.cpp && ./main_game`
 
+Compiler (en utilisant le Makefile) : `make` puis : `main_game.exe` (windows) `./main_game` (linux)
+
 ## Barême
 La note 12/20 pourra être obtenue si:
 - [x] les fichiers de votre projet compilent.
