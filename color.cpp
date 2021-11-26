@@ -141,9 +141,7 @@ std::string get_color_of(int value) {
         break;
     
     default:
-        bg_color = Black;
-        fg_color = White;
-        break;
+        return "";
     }
 
     return format_color(Normal, bg_color, fg_color);
