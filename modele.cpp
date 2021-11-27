@@ -59,12 +59,7 @@ Plateau addRandomTile(Plateau plateau) {
 	return plateau;
 }
 
-/**
- * @brief Type conversion function from vector<int> to Line type
- * 
- * @param convertVector 
- * @return Line 
- */
+
 Line toLine(vector<int> convertVector) {
 	Line returnLine (convertVector.size());
 	for (int i = 0; i < convertVector.size(); i++) {

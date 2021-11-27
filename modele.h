@@ -59,7 +59,7 @@ Plateau plateauInitial();
 vector<int> randomPosition(Plateau plateau);
 
 /**
- * @brief tirer 2 ou 4 aléatoirement
+ * @brief génère aléatoirement un 2 ou un 4 avec des probabilités respectives de 9/10 et 1/10
  * 
  * @return un entier dans l'ensemble {2, 4}
  */
@@ -83,7 +83,6 @@ Plateau deplacementDroite(Plateau plateau); // @asma
 
 /**
  * @brief déplacement vers le haut suivant les règles du jeu; renvoie un nouveau plateau
- * 
  * @param plateau 
  * @return ** Plateau après le déplacement
  */
@@ -105,6 +104,13 @@ Plateau deplacementBas(Plateau plateau); // @redwane
  * @return Plateau après déplacement
  */
 Plateau deplacement(Plateau plateau, int direction); // @all
+
+
+/**
+ * @brief affiche des étoiles
+ * @return string 
+ */
+string starsDrawer()
 
 /**
  * @brief affiche le plateau g au console
@@ -136,15 +142,23 @@ bool estTermine(Plateau plateau);
 bool estGagnant(Plateau plateau);
 
 /**
- * @brief détermine le score de la partie
+ * @brief fait la somme de 2 cases identiques sur une même ligne 
  * 
- * @param plateau 
- * @return int score de la partie.
+ * @param  Line line, qui prend une ligne du plateau comme attribut
+ * @param int, entier qui définie la direction du mouvement 
+ * @return  line telle que la somme des 2 cases identiques dans une case et 0 dans 2 ème case
  */
-int score(Plateau plateau);
-
 vector<int> sumX(vector<int> line, int dir=GAUCHE);
 
+/**
+ * @brief fait la somme de 2 cases identiques sur une même colonnes 
+ * 
+ * @param  Column column 
+ * @param int, entier qui définie la direction du mouvement 
+ * @return  colonne telle que la somme des 2 cases identiques dans une case et 0 dans 2 ème case sur une meme colonne 
+ */
+
+Column sumY(Column column, int dir=HAUT);
 /**
  * @brief organise les lignes du tableau vers la guache 
  * 
@@ -154,8 +168,22 @@ vector<int> sumX(vector<int> line, int dir=GAUCHE);
  */
 vector<int> organizeLeft(vector<int> line);
 
+/**
+ * @brief organise les lignes du tableau vers la haut
+ * 
+ * @param Column Column
+ * @param Column newolumn, column de 4 lignes et une colonne  qui sera renvoyée 
+ * @return newcolumn organisée de sorte que tous les nombres différents de 0 sont déplacés vers le haut
+ */
 Column organizeUp(Column column);
 
+/**
+ * @brief organise les lignes du tableau vers le bas
+ * 
+ * @param Column Column
+ * @param Column newolumn, column de 4 lignes et une colonne  qui sera renvoyée 
+ * @return newcolumn organisée de sorte que tous les nombres différents de 0 sont déplacés vers le bas
+ */
 Column organizeDown(Column column);
 
 /**
@@ -177,8 +205,20 @@ Plateau addRandomTile(Plateau plateau);
  */
 vector<int> organizeRight(vector<int> line) ;
 
-void timeInit();
-
-Column sumY(Column column, int dir=HAUT);
-
+/**
+ * @brief calcule la longeur du nombre
+ * @param un entier 
+ * @return la longueur du nombre
+ */
 int lenInt(int number);
+
+/**
+ * @brief Type conversion function from vector<int> to Line type
+ * 
+ * @param convertVector 
+ * @return Line 
+ */
+Line toLine(vector<int> convertVector);
+
+
+void timeInit();
