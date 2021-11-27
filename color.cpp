@@ -144,5 +144,5 @@ std::string get_color_of(int value) {
         return "";
     }
 
-    return format_color(Normal, bg_color, fg_color);
+    return format_color(NORMAL, bg_color, fg_color);
 }
