@@ -35,8 +35,6 @@ const int GAUCHE = 7,
 
 const int displayWidth = 7; // controls console display width
 
-// typedef vector< vector<int> > Plateau;
-// typedef vector< vector<int> > Column;
 
 /**
  * @returns un plateau vide
@@ -50,6 +48,7 @@ Plateau plateauVide();
 */
 Plateau plateauInitial();
 
+// TODO : rewrite documentation
 /**
  * @brief renvoi un entier < maxInt aléatoirement
  * 
@@ -91,7 +90,7 @@ Plateau deplacementHaut(Plateau plateau); // @asma
 /**
  * @brief déplacement vers le bas suivant les règles du jeu; renvoie un nouveau plateau
  * 
- * @param plateau 
+ * @param plateau Plateau
  * @return ** Plateau après le déplacement
  */
 Plateau deplacementBas(Plateau plateau); // @redwane
@@ -99,7 +98,7 @@ Plateau deplacementBas(Plateau plateau); // @redwane
 /**
  * @brief effectue un déplacement en éxecutant l'une des fonctions de déplacement
  * 
- * @param plateau
+ * @param plateau Plateau
  * @param direction un entier parmi {7, 4, 8, 2} - voir variables const.
  * @return Plateau après déplacement
  */
@@ -110,12 +109,12 @@ Plateau deplacement(Plateau plateau, int direction); // @all
  * @brief affiche des étoiles
  * @return string 
  */
-string starsDrawer()
+string starsDrawer();
 
 /**
  * @brief affiche le plateau g au console
  * 
- * @param g un plateau
+ * @param g un lateau
  * @return string 
  */
 string dessine(Plateau g); // @all
@@ -144,32 +143,32 @@ bool estGagnant(Plateau plateau);
 /**
  * @brief fait la somme de 2 cases identiques sur une même ligne 
  * 
- * @param  Line line, qui prend une ligne du plateau comme attribut
+ * @param Line line, qui prend une ligne du plateau comme attribut
  * @param int, entier qui définie la direction du mouvement 
- * @return  line telle que la somme des 2 cases identiques dans une case et 0 dans 2 ème case
+ * @return line telle que la somme des 2 cases identiques dans une case et 0 dans 2 ème case
  */
 vector<int> sumX(vector<int> line, int dir=GAUCHE);
 
 /**
  * @brief fait la somme de 2 cases identiques sur une même colonnes 
  * 
- * @param  Column column 
- * @param int, entier qui définie la direction du mouvement 
- * @return  colonne telle que la somme des 2 cases identiques dans une case et 0 dans 2 ème case sur une meme colonne 
+ * @param column Column 
+ * @param dir int qui définie la direction du mouvement 
+ * @return colonne telle que la somme des 2 cases identiques dans une case et 0 dans 2 ème case sur une meme colonne 
  */
 
 Column sumY(Column column, int dir=HAUT);
 /**
- * @brief organise les lignes du tableau vers la guache 
+ * @brief organise les lignes du tableau vers la gauche 
  * 
- * @param vector<int> line, ligne du tableau
- * @param vector<int> newline, la nouvelle ligne qui sera renvoyée 
+ * @param line vector<int>, ligne du tableau
+ * @param newline vector<int>, la nouvelle ligne qui sera renvoyée 
  * @return une nouvelle ligne organisée de sorte que tous les nombres différents de 0 sont déplacés vers la gauche
  */
 vector<int> organizeLeft(vector<int> line);
 
 /**
- * @brief organise les lignes du tableau vers la haut
+ * @brief organise les lignes du tableau vers le haut
  * 
  * @param Column Column
  * @param Column newolumn, column de 4 lignes et une colonne  qui sera renvoyée 
@@ -199,21 +198,21 @@ Plateau addRandomTile(Plateau plateau);
 /**
  * @brief organise les lignes du tableau vers la droite
  * 
- * @param vector<int> line, ligne du tableau
- * @param vector<int> newline, la nouvelle ligne qui sera renvoyée 
+ * @param line vector<int>, ligne du tableau
+ * @param newline vector<int>, la nouvelle ligne qui sera renvoyée 
  * @return une nouvelle ligne organisée de sorte que tous les nombres différents de 0 sont déplacés vers la droite
  */
-vector<int> organizeRight(vector<int> line) ;
+vector<int> organizeRight(vector<int> line);
 
 /**
- * @brief calcule la longeur du nombre
- * @param un entier 
- * @return la longueur du nombre
+ * @brief calcule le nombre des chiffres
+ * @param number int
+ * @return la longueur de number
  */
 int lenInt(int number);
 
 /**
- * @brief Type conversion function from vector<int> to Line type
+ * @brief type conversion function from vector<int> to Line type
  * 
  * @param convertVector 
  * @return Line 
