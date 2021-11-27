@@ -3,3 +3,6 @@ main_game
 untracked
 .vscode/settings.json
 main_game.exe
+color.o
+modele.o
+main_game.o
