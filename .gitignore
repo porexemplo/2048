@@ -6,3 +6,5 @@ main_game.exe
 color.o
 modele.o
 main_game.o
+game_ui/main.o
+game_ui/graphx.o
