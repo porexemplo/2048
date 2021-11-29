@@ -5,7 +5,6 @@
 #include <cstdlib>
 #include <ctime>
 #include "modele.h"
-// #include <SFML/Graphics.hpp>
 
 using namespace std;
 

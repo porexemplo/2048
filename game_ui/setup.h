@@ -1,7 +1,7 @@
 #pragma once
 
 // window scale
-const int SCALE = 1080;
+const int SCALE = 1200;
 
 // grid element size constants
 // the "_" at the end of a constant denotes that the constant is calculated automatically

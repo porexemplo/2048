@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <SFML/Graphics.hpp>
 using namespace std;
 
 #define LEFT 75
@@ -14,6 +15,7 @@ public:
     using vector::vector;
     int score;
     bool isMoved = false;
+    vector<pair<pair<sf::Vector2i, sf::Vector2i>, char>> moveLog;
 };
 
 class Column: public vector<vector<int>> {

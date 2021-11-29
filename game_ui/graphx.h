@@ -5,8 +5,6 @@
 #include "modele.h"
 #include <string>
 
-sf::Clock animationTimer;
-
 void renderLayout(sf::RenderTarget& target);
 void renderGrid(Plateau grid, sf::RenderTarget& target);
 

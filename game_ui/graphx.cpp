@@ -1,5 +1,7 @@
 #include "graphx.h"
 
+sf::Clock animationTimer;
+
 void renderLayout(sf::RenderTarget& target) {
     sf::RectangleShape Canvas;
     Canvas.setSize(sf::Vector2f(CANVAS, CANVAS));
@@ -47,6 +49,9 @@ void renderGrid(Plateau plateau, sf::RenderTarget& target) {
             target.draw(TileOutput);
         }
     }
+
+    // NOTE : this part is to add animations after each move
+
 }
 
 Plateau actOnEvent(sf::Event event, Plateau plateau) {
