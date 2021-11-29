@@ -89,13 +89,13 @@ sf::Color getTileColor(int value) {
         return sf::Color(246, 94, 59);
 	case 128:
         return sf::Color(237, 207, 114);
-	case 512:
+	case 256:
         return sf::Color(237, 204, 97);
-	case 1024:
+	case 512:
         return sf::Color(237, 200, 80);
-	case 2048:
+	case 1024:
         return sf::Color(237, 197, 63);
-	case 4096:
+	case 2046:
         return sf::Color(237, 194, 46);
     default:
         return sf::Color(205, 193, 180);
