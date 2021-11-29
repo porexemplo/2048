@@ -22,12 +22,14 @@ class Column: public vector<vector<int>> {
 public:
     using vector::vector;
     int score;
+    int tempMove[2];
 };
 
 class Line: public vector<int> {
 public:
     using vector::vector;
     int score;
+    int tempMove[2];
 };
 
 const int GAUCHE = 7,
