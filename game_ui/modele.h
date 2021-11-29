@@ -13,6 +13,7 @@ class Plateau: public vector<vector<int>> {
 public:
     using vector::vector;
     int score;
+    bool isMoved = false;
 };
 
 class Column: public vector<vector<int>> {

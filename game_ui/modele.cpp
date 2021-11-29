@@ -249,6 +249,10 @@ Plateau deplacement(Plateau plateau, int direction) {
 
 	if (plateau != oldPlateau) {
 		plateau = addRandomTile(plateau);
+		plateau.isMoved = true;
+	}
+	else {
+		plateau.isMoved = false;
 	}
 	return plateau;
 }
