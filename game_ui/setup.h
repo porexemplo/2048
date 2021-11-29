@@ -16,4 +16,7 @@ const int yWIN = 1 * SCALE,
           mTILE_ = (CANVAS - TILE * 4) * .2,
           
           xRESET = .29 * CANVAS,
-          yRESET = .38 * TILE;
+          yRESET = .38 * TILE,
+          
+          xSCORE = .85 * xRESET,
+          ySCORE = .4 * xSCORE;

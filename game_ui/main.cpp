@@ -2,12 +2,12 @@
 
 int main() {
 
-    Plateau plateau = {{2, 0, 2, 2048},
-                       {128, 8, 16, 4},
-                       {0, 0, 32, 4},
-                       {2, 4, 64, 32}};
+    // Plateau plateau = {{2, 0, 2, 2048},
+    //                    {128, 8, 16, 4},
+    //                    {0, 0, 512, 4},
+    //                    {1024, 4, 64, 32}};
 
-    // Plateau plateau = plateauInitial();
+    Plateau plateau = plateauInitial();
 
     sf::RenderWindow window(sf::VideoMode(xWIN, yWIN), "Tiles", sf::Style::Titlebar | sf::Style::Close);
 
