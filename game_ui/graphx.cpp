@@ -49,6 +49,30 @@ void renderGrid(Plateau plateau, sf::RenderTarget& target) {
     }
 }
 
+Plateau actOnEvent(sf::Event event, Plateau plateau) {
+    sf::Keyboard::Key keyboardInput = event.key.code;
+
+    if (event.type == sf::Event::KeyPressed) {
+        // NOTE : i have no idea why keyboard input is inverted -> black magic :)
+        switch (keyboardInput)
+        {
+        case sf::Keyboard::Left:
+            return deplacement(plateau, HAUT);
+        case sf::Keyboard::Right:
+            return deplacement(plateau, BAS);
+        case sf::Keyboard::Up:
+            return deplacement(plateau, GAUCHE);
+        case sf::Keyboard::Down:
+            return deplacement(plateau, DROITE);
+        
+        default:
+            return plateau;
+        }
+    }
+
+    return plateau;
+}
+
 sf::Color getTileColor(int value) {
     switch (value) {
     case 2:
