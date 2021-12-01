@@ -19,12 +19,12 @@ void renderLayout(sf::RenderTarget& target) {
 
     sf::Text newGame;
     sf::Font font;
-    if (!font.loadFromFile("ClearSans.ttf"))
+    if (!font.loadFromFile("fonts/ClearSans.ttf"))
         printf("Failed to load font\n");
     newGame.setFont(font);
     newGame.setStyle(sf::Text::Style::Bold);
     newGame.setFillColor(sf::Color(255, 255, 255));
-    newGame.setString("Rejouer");
+    newGame.setString("New Game");
     sf::FloatRect floatrect = newGame.getLocalBounds();
     newGame.setPosition(xWIN - mCANVAS_ - xRESET + (xRESET - floatrect.width) * .5 - floatrect.left,
                         .575 * (yWIN - (CANVAS + mCANVAS_)) + (yRESET - floatrect.height) * .5 - floatrect.top
@@ -32,6 +32,16 @@ void renderLayout(sf::RenderTarget& target) {
     newGame.setCharacterSize(.5 * yRESET);
 
     target.draw(newGame);
+
+    sf::Text mainText;
+    mainText.setString("2048");
+    mainText.setCharacterSize(2 * ySCORE);
+    mainText.setFont(font);
+    floatrect = mainText.getLocalBounds();
+    mainText.setPosition(mCANVAS_ - floatrect.left, (1 - .9) * CANVAS * 1.25);
+    mainText.setFillColor(sf::Color(119, 110, 101));
+    mainText.setStyle(sf::Text::Style::Bold);
+    target.draw(mainText);
 }
 
 void renderGrid(Plateau plateau, sf::RenderTarget& target) {
@@ -40,7 +50,7 @@ void renderGrid(Plateau plateau, sf::RenderTarget& target) {
 
     sf::Text TileOutput;
     sf::Font font;
-    if (!font.loadFromFile("ClearSans.ttf"))
+    if (!font.loadFromFile("fonts/ClearSans.ttf"))
 			printf("Failed to load font\n");
     TileOutput.setFont(font);
     TileOutput.setStyle(sf::Text::Style::Bold);
@@ -63,35 +73,35 @@ void renderGrid(Plateau plateau, sf::RenderTarget& target) {
                 (yWIN - (CANVAS + mCANVAS_) + mTILE_ + j * (mTILE_ + TILE)) + (TILE - floatrect.height) / 2 - floatrect.top
                 );
             target.draw(TileOutput);
-
-            sf::RectangleShape ScoreBox;
-            ScoreBox.setSize(sf::Vector2f(xSCORE, ySCORE));
-            ScoreBox.setPosition(xWIN - mCANVAS_ - xSCORE, (1 - .9) * CANVAS);
-            ScoreBox.setFillColor(sf::Color(187, 173, 160));
-            target.draw(ScoreBox);
-
-            sf::Text ScoreText;
-            ScoreText.setFont(font);
-            ScoreText.setCharacterSize(.3 * ySCORE);
-            ScoreText.setString("SCORE");
-            floatrect = ScoreText.getLocalBounds();
-            ScoreText.setPosition(xWIN - mCANVAS_ - xSCORE + (xSCORE - floatrect.width) * .5 - floatrect.left,
-                              (1 - .9) * CANVAS
-                             );
-            ScoreText.setStyle(sf::Text::Style::Bold);
-            target.draw(ScoreText);
-
-            sf::Text ScoreValue;
-            ScoreValue.setFont(font);
-            ScoreValue.setCharacterSize(.5 * ySCORE);
-            ScoreValue.setString(std::to_string(plateau.score));
-            floatrect = ScoreValue.getLocalBounds();
-            ScoreValue.setPosition(xWIN - mCANVAS_ - xSCORE + (xSCORE - floatrect.width) * .5 - floatrect.left,
-                              (1 - .87) * CANVAS
-                             );
-            ScoreValue.setStyle(sf::Text::Style::Bold);
-            target.draw(ScoreValue);
         }
+
+        sf::RectangleShape ScoreBox;
+        ScoreBox.setSize(sf::Vector2f(xSCORE, ySCORE));
+        ScoreBox.setPosition(xWIN - mCANVAS_ - xSCORE, (1 - .9) * CANVAS);
+        ScoreBox.setFillColor(sf::Color(187, 173, 160));
+        target.draw(ScoreBox);
+
+        sf::Text ScoreText;
+        ScoreText.setFont(font);
+        ScoreText.setCharacterSize(.3 * ySCORE);
+        ScoreText.setString("SCORE");
+        sf::FloatRect floatrect = ScoreText.getLocalBounds();
+        ScoreText.setPosition(xWIN - mCANVAS_ - xSCORE + (xSCORE - floatrect.width) * .5 - floatrect.left,
+                            (1 - .9) * CANVAS
+                            );
+        ScoreText.setStyle(sf::Text::Style::Bold);
+        target.draw(ScoreText);
+
+        sf::Text ScoreValue;
+        ScoreValue.setFont(font);
+        ScoreValue.setCharacterSize(.5 * ySCORE);
+        ScoreValue.setString(std::to_string(plateau.score));
+        floatrect = ScoreValue.getLocalBounds();
+        ScoreValue.setPosition(xWIN - mCANVAS_ - xSCORE + (xSCORE - floatrect.width) * .5 - floatrect.left,
+                            (1 - .87) * CANVAS
+                            );
+        ScoreValue.setStyle(sf::Text::Style::Bold);
+        target.draw(ScoreValue);
     }
 
     // NOTE : this part is to add animations after each move
