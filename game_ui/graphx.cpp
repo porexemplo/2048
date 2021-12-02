@@ -25,22 +25,23 @@ void renderLayout(sf::RenderTarget& target) {
     newGame.setStyle(sf::Text::Style::Bold);
     newGame.setFillColor(sf::Color(255, 255, 255));
     newGame.setString("New Game");
+    newGame.setCharacterSize(.5 * yRESET);
     sf::FloatRect floatrect = newGame.getLocalBounds();
     newGame.setPosition(xWIN - mCANVAS_ - xRESET + (xRESET - floatrect.width) * .5 - floatrect.left,
                         .575 * (yWIN - (CANVAS + mCANVAS_)) + (yRESET - floatrect.height) * .5 - floatrect.top
                        );
-    newGame.setCharacterSize(.5 * yRESET);
 
     target.draw(newGame);
 
     sf::Text mainText;
     mainText.setString("2048");
-    mainText.setCharacterSize(2 * ySCORE);
+    mainText.setCharacterSize(1.8 * ySCORE);
     mainText.setFont(font);
     floatrect = mainText.getLocalBounds();
     mainText.setPosition(mCANVAS_ - floatrect.left, (1 - .9) * CANVAS * 1.25);
     mainText.setFillColor(sf::Color(119, 110, 101));
     mainText.setStyle(sf::Text::Style::Bold);
+
     target.draw(mainText);
 }
 

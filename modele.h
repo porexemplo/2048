@@ -1,14 +1,29 @@
 #pragma once
 #include <iostream>
+#include <sstream>
 #include <vector>
 #include <string>
 #include <conio.h>
+#include <cstdlib>
+#include <ctime>
+#include <iomanip>
+#include <cassert>
+#include "color.h"
+
 using namespace std;
 
 #define LEFT 75
 #define RIGHT 77
 #define UP 72
 #define DOWN 80
+
+const int GAUCHE = 7,
+          DROITE = 4,
+          HAUT = 8,
+          BAS = 2;
+
+const int displayWidth = 7; // controls console display width
+
 
 class Plateau: public vector<vector<int>> {
 public:
@@ -28,23 +43,16 @@ public:
     int score;
 };
 
-const int GAUCHE = 7,
-          DROITE = 4,
-          HAUT = 8,
-          BAS = 2;
-
-const int displayWidth = 7; // controls console display width
-
 
 /**
- * @returns un plateau vide
+ * @return un plateau vide
 */
 Plateau plateauVide();
 
 /**
  * @brief initialise un nouveau jeu
  *
- * @returns un plateau initialisé i.e. avec deux valeurs réparties aléatoirement
+ * @return un plateau initialisé i.e. avec deux valeurs réparties aléatoirement
 */
 Plateau plateauInitial();
 
@@ -147,7 +155,7 @@ bool estGagnant(Plateau plateau);
  * @param int, entier qui définie la direction du mouvement 
  * @return line telle que la somme des 2 cases identiques dans une case et 0 dans 2 ème case
  */
-vector<int> sumX(vector<int> line, int dir=GAUCHE);
+Line sumX(Line line, int dir=GAUCHE);
 
 /**
  * @brief fait la somme de 2 cases identiques sur une même colonnes 

@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build main_game",
+            "label": "C++ Build Game",
             "type": "shell",
             "command": "make",
             "args": [
@@ -14,7 +14,24 @@
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
+            },
+            "problemMatcher": []
+        },
+        {
+            "type": "cppbuild",
+            "label": "C/C++ Execute Tests",
+            "command": "g++",
+            "args": [
+                "-std=c++11",
+                "${file}",
+                "-o",
+                "${fileBasenameNoExtension}",
+                "modele.cpp",
+                "&&",
+                "${fileBasenameNoExtension}.exe"
+            ],
+            "group": "build",
+            "detail": "compiler: g++"
         }
     ]
 }

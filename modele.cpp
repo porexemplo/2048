@@ -1,14 +1,6 @@
-#include <iostream>
-#include <sstream>
-#include <string>
-#include <vector>
-#include <cstdlib>
-#include <ctime>
-#include <iomanip>
 #include "modele.h"
-#include "color.h"
 #include "center_class.cpp"
-// #include <SFML/Graphics.hpp>
+
 
 using namespace std;
 
@@ -296,9 +288,9 @@ string dessine(Plateau g) {
 }
 
 bool estTermine(Plateau plateau){
-	vector<int> dir = { 2,4,7,8};
+	vector<int> dir = {2, 4, 7, 8};
 	for( int i : dir){
-		if ( plateau != deplacement( plateau, i)){
+		if ( plateau != deplacement(plateau, i)){
 			return false;
 		}
 	}
@@ -306,8 +298,8 @@ bool estTermine(Plateau plateau){
 }
 
 bool estGagnant(Plateau plateau){
-	for(int i=0; i<plateau.size(); i++){
-		for (int j =0; j< plateau[i].size(); j++){
+	for(int i = 0; i < plateau.size(); i++){
+		for (int j = 0; j < plateau[i].size(); j++){
 			if (plateau[i][j] == 2048){
 				return true;
 			}

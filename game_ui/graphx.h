@@ -5,6 +5,8 @@
 #include "modele.h"
 #include <string>
 
+std::vector<std::pair<std::pair<sf::Vector2i, sf::Vector2i>, char>> moves;
+
 void renderLayout(sf::RenderTarget& target);
 void renderGrid(Plateau grid, sf::RenderTarget& target);
 

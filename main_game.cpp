@@ -1,6 +1,4 @@
 #include "modele.h"
-#include <iostream>
-using namespace std;
 
 // TODO write documentation
 void refreshConsole() {
@@ -20,6 +18,7 @@ int main() {
     Plateau plateau = plateauInitial();
     cout << dessine(plateau);
 
+// ISSUE : cannot get out of loop in terminal
     while(not estTermine(plateau)) {
         string dir;
         cout << "Entrer dir : ";
