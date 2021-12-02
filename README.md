@@ -5,7 +5,7 @@ Compiler et exécuter -- linux : `g++ main_game.cpp -o main_game modele.cpp colo
 
 Compiler (en utilisant le Makefile) : `make` puis : `main_game.exe` (windows) `./main_game` (linux)
 
-## Barême (12 + 8)
+## Barême (12 + 10 bonus)
 La note 12/20 pourra être obtenue si:
 - [x] les fichiers de votre projet compilent.
 - [x] le jeu est fonctionnel.
