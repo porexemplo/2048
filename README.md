@@ -24,6 +24,11 @@ La note 12/20 pourra être obtenue si:
 ### Niveau II
 - [x] créer un `makefile` **simple** pour la compilation (2p) // [Makefiles](https://stackoverflow.com/questions/2481269/how-to-make-a-simple-c-makefile) sur Stackoverflow
 - [x] utiliser un "version control system" comme `git` (1p)
+### Niveau III
+- [ ] Implanter une AI / joueur automatique
+- [ ] Implanter des variantes du jeu / créer la vôtre
+- [x] Implanter une version de 2048 avec une interface graphique (2p)
+- [ ] Une application android / iOS (2p)
 ## Rappels GIT :
 1. `git pull` -> mise à jour des fichiers locaux.
 2. modifier les fichiers.
