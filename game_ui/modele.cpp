@@ -163,6 +163,16 @@ Column organizeDown(Column column) {
 	return newColumn;
 }
 
+Plateau transpose(Plateau plateau) {
+	Plateau tempPlateau = plateauVide();
+	for (int i = 0; i < 4; i++)
+		for (int j = 0; j < 4; j++) {
+			tempPlateau[j][i] = plateau[i][j];
+		}
+	tempPlateau.score = plateau.score;
+	return tempPlateau;
+}
+
 Plateau deplacementGauche(Plateau plateau) {
 	Plateau newPlateau = plateauVide();
 
