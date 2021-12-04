@@ -164,16 +164,36 @@ Column organizeDown(Column column) {
 }
 
 Plateau deplacementGauche(Plateau plateau) {
-	Line line;
+	Plateau newPlateau = plateauVide();
+
 	for (int i = 0; i < plateau.size(); i++) {
-		line = toLine(plateau[i]);
-		line = organizeLeft(line);
-		line.score = plateau.score;
-		line = sumX(line, GAUCHE);
-		plateau.score = line.score;
-		plateau[i] = organizeLeft(line);
+		vector<int> line = plateau[i], newLine (4);
+		int currentPosition = 0, sumValue = 0;
+
+		// NOTE : working on each line and generating newLine
+		for (int j = 0; j < line.size(); j++) {
+			if (not newLine[currentPosition]) {
+				newLine[currentPosition] = line[j];
+				continue;
+			}
+			
+			if (newLine[currentPosition] != line[j]) {
+				currentPosition++;
+                j--;
+				continue;
+			}
+
+			// NOTE : case where the sum is applied
+			newPlateau.isMoved = true;
+			sumValue = 2 * line[j];
+			newLine[currentPosition] = sumValue;
+			currentPosition++;
+		}
+
+		newPlateau[i] = newLine;
 	}
-	return plateau;
+
+	return newPlateau;
 }
 
 Plateau deplacementDroite(Plateau plateau) {
