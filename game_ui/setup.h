@@ -9,7 +9,7 @@ const int SCALE = 1200;
 const int yWIN = 1 * SCALE,
           xWIN = .7 * SCALE,
 
-          CANVAS = .9 * xWIN,
+          CANVAS = .84 * xWIN,
           mCANVAS_ = (xWIN - CANVAS) * .5,
 
           TILE = .215 * CANVAS,
