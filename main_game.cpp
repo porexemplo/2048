@@ -18,10 +18,9 @@ int main() {
     Plateau plateau = plateauInitial();
     cout << dessine(plateau);
 
-// ISSUE : cannot get out of loop in terminal
     while(not estTermine(plateau)) {
         string dir;
-        cout << "Entrer dir : ";
+        cout << "\nUse arrow keys to navigate, press q to quit\n";
         
         int userInput = 0;
 
@@ -38,9 +37,12 @@ int main() {
             case RIGHT:
                 plateau = deplacement(plateau, DROITE);
                 break;
+            case 113:
+                break;
         }
 
         refreshConsole();
+        if (userInput == 113) break;
         cout << dessine(plateau);
     }
 }
