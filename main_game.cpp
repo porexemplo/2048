@@ -1,9 +1,11 @@
 #include "modele.h"
 
-// TODO write documentation
+/**
+ * @brief refreshes console based on OS
+ * 
+ */
 void refreshConsole() {
 #if defined _WIN32 // preprocessor directive
-    //clrscr(); // include conio.h
     system("cls");
 #elif defined (__linux__) || defined(__gnu_linux__) || defined(__LINUX__) || defined(__APPLE__)
     // system("clear");
