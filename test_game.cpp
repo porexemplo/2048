@@ -126,7 +126,7 @@ void test_deplacement() {
     assert(test_3);
     assert(test_4);
 }
-
+// probleme  lors de la compilation undefined organizeLeft and organizeRight
 void test_organizeLeft() {
 	vector<int> line_1 = {2,0 , 4, 0};
 	vector<int> line_2 = {0,8 , 4, 0};
