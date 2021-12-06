@@ -1,3 +1,12 @@
+/**
+ * @file main_game.cpp
+ * @authors redwane, asma
+ * @brief main script, takes input and renders game to console
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
 #include "modele.h"
 
 /**
