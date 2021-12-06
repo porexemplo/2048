@@ -1,4 +1,15 @@
+/**
+ * @file modele.cpp
+ * @authors redwane, asma
+ * @brief contains backend functions for the game
+ * see @file modele.h for documentation
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
 #include "modele.h"
+
+// library to center text when working with setw()
 #include "center_class.cpp"
 
 
@@ -60,7 +71,7 @@ Line toLine(vector<int> convertVector) {
 	return returnLine;
 }
 
-// note: default parameters should only be assigned in the function declaration, i.e. in modele.h
+// NOTE : default parameters should only be assigned in the function declaration, i.e. in modele.h
 Line sumX(Line line, int dir/*=GAUCHE*/) {
 	if (dir == GAUCHE) {
 		for (int i = 0; i < 3; i++) {
