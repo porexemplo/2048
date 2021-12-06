@@ -127,12 +127,189 @@ void test_deplacement() {
     assert(test_4);
 }
 
-void test_sumX() {}
-void test_sumY() {}
-void test_organizeLeft() {}
-void test_organizeRight() {}
-void test_organizeUp() {}
-void test_organizeDown() {}
+void test_organizeLeft() {
+	vector<int> line_1 = {2,0 , 4, 0};
+	vector<int> line_2 = {0,8 , 4, 0};
+	vector<int> line_3 = {2,8 , 4, 2};
+                         
+                         
+    vector<int> organize_left_1 = {0, 0, 2, 4};
+    vector<int> organize_left_2 = {0, 0, 8, 4};
+    vector<int> organize_left_3 = {2, 8, 2, 4};
+							
+    
+    
+    bool test_1 = organizeLeft(line_1) == organize_left_1;
+    bool test_2 = organizeLeft(line_2) == organize_left_2;
+    bool test_3 = organizeLeft(line_3) == organize_left_3;
+   
+    
+
+    assert(test_1);
+    assert(test_2);
+    assert(test_3);
+                  
+	}
+	
+void test_organizeRight() {
+	vector<int> line_1 = {2,0 , 4, 0};
+	vector<int> line_2 = {0,8 , 4, 0};
+	vector<int> line_3 = {2,8 , 4, 2};
+                         
+                         
+    vector<int> organize_right_1 = {2, 4, 0, 0};
+    vector<int> organize_right_2 = {8, 4, 0, 0};
+    vector<int> organize_right_3 = {2, 8, 2, 4};
+							
+    
+    
+    bool test_1 = organizeRight(line_1) == organize_right_1;
+    bool test_2 = organizeRight(line_2) == organize_right_2;
+    bool test_3 = organizeRight(line_3) == organize_right_3;
+   
+    
+
+    assert(test_1);
+    assert(test_2);
+    assert(test_3);
+                  
+	}
+
+void test_organizeUp() {
+	Column column_1 = {  {0},
+                         {2},
+                         {0},
+                         {2}};
+                         
+    Column column_2 =  { {8},
+                         {2},
+                         {0},
+                         {2}};
+                          
+    Column column_3 = {  {4},
+                         {2},
+                         {4},
+                         {2}};                                        
+							
+                         
+    Column organize_up_1 = {{2},
+						    {2},
+							{0},
+							{0}};
+							
+    Column organize_up_2 = {{8},
+						    {2},
+							{2},
+							{0}};
+							
+	Column organize_up_3 = {{4},
+						    {2},
+							{4},
+							{2}};						
+    
+		bool test_1 = organizeUp(column_1) == organize_up_1;
+		bool test_2 = organizeUp(column_2) == organize_up_2;
+		bool test_3 = organizeUp(column_3) == organize_up_3;
+		
+		assert(test_1);
+		assert(test_2);
+		assert(test_3);
+		 
+	
+	}
+	
+void test_organizeDown() {
+	Column column_1 = {  {0},
+                         {2},
+                         {0},
+                         {2}};
+                         
+    Column column_2 = {  {8},
+                         {2},
+                         {0},
+                         {2}};
+                          
+    Column column_3 = {  {4},
+                         {2},
+                         {4},
+                         {2}};                                        
+							
+                         
+    Column organize_down_1 = {{0},
+						      {0},
+							  {2},
+							  {2}};
+							
+    Column organize_down_2 = {{0},
+						      {8},
+					  		  {2},
+							  {2}};
+							
+	Column organize_down_3 = {{4},
+							  {2},
+							  {4},
+							  {2}};						
+    
+		bool test_1 = organizeDown(column_1) == organize_down_1;
+		bool test_2 = organizeDown(column_2) == organize_down_2;
+		bool test_3 = organizeDown(column_3) == organize_down_3;
+		
+		assert(test_1);
+		assert(test_2);
+		assert(test_3);
+		 
+	             
+	
+	}
+
+void test_sumX() {
+	// le plateau est deja organise car la fonction sumx n'est appelé qu'après l'organisation du plateau selon le déplacement choisi
+	Line line = {2, 2, 4, 4};
+                         
+   //default left direction
+	Line sumx_line = {0, 4, 0, 8};
+							
+	
+	bool test_1 = sumX(line) == sumx_line;
+	/*
+	bool test_2 = sumX(mvPlateau[1]) == sumx_plateau[1];
+	bool test_3 = sumX(mvPlateau[2]) == sumx_plateau[2];
+	bool test_4 = sumX(mvPlateau[3]) == sumx_plateau[3];
+	*/
+	assert(test_1);
+	/*
+    assert(test_2);
+    assert(test_3);
+    assert(test_4);
+    */
+	}
+	
+
+
+void test_sumY() {
+	//on va tester la somme des colonnes vers le bas lors du déplacement bsas
+	// la fonction sumy n'est applé qu'après l'organisation de column vers le bas
+	Column mvColumn = {{2},
+                       {2},
+                       {2},
+                       {2}};
+	
+	Column sumy_column = {{0},
+                          {4},
+                          {0},
+                          {4}};
+                          
+	 
+		bool test_1 = sumY(mvColumn) == sumy_column;
+		
+		assert(test_1);
+	   
+                          
+	}
+
+
+
+
 
 /* TEST_GROUP_04 : console display functions */
 /**
@@ -166,6 +343,11 @@ void test_lenInt() {
     bool test_2 = len_2 == 2;
     bool test_3 = len_3 == 3;
     bool test_4 = len_4 == 4;
+    
+    assert(test_1);
+    assert(test_2);
+    assert(test_3);
+    assert(test_4);
 }
 
 int main() {
@@ -188,6 +370,17 @@ int main() {
 
     /* TEST_GROUP_06 */
     test_lenInt();
-
+    
+    test_sumX();
+    
+    test_sumY();
+    
+	test_organizeUp();
+	
+	test_organizeDown();
+	
+	test_organizeLeft();
+	
+	test_organizeRight();
     return 0;
 }

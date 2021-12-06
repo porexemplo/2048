@@ -19,7 +19,7 @@ using namespace std;
 void timeInit() {
 	srand ((unsigned)time(0));
 }
-
+// la fonction renvoie un plateau de 2 dimensions intialisé à 0
 Plateau plateauVide() {
 	Plateau plaVide (4);
 	for (int i = 0; i < 4; i++) {
@@ -35,7 +35,8 @@ Plateau plateauInitial() {
 	plateau.score = 0;
 	return plateau;
 }
-
+// premièrement on parours le plateau et on stocke les indices ({i,j}) des cases vides dans un tableau 2D 'positions' , et on renvoie un indice aléatoire de postions
+// qui renvoie un tableau d'entier {i,j}
 vector<int> randomPosition(Plateau plateau) {
 	vector<vector<int>> positions;
 	for (int i = 0; i < plateau.size(); i++) {
@@ -47,13 +48,14 @@ vector<int> randomPosition(Plateau plateau) {
 	}
 	return positions[(rand() % positions.size())];
 }
-
+// renvoie un entier aléatorement soit 2 avec un pourcentage de 90% ou 4 avec un pourcentage de 10%
 int tireDeuxOuQuatre() {
 	vector<int> possib = {2, 4};
 	bool TrueFalse = (rand() % 100) > 90;
 	return possib[TrueFalse];
 }
-
+// grâcce à la fonction randomPosition qui renvoie les indices d'une case vide du plateau, on intialise cette case avec 2 ou 4 grâce à la fonction tireDeuxOuQuatre 
+// Donc le rôle de la fonction addRadomTile et intialiser une case vide du plateau avec 2 ou 4 aléatoirement
 Plateau addRandomTile(Plateau plateau) {
 	vector<int> randPos = randomPosition(plateau);
 	int i = randPos[0],
@@ -62,7 +64,8 @@ Plateau addRandomTile(Plateau plateau) {
 	return plateau;
 }
 
-
+// le but de  la fonction toLine convertit une ligne du plateau qui est un vector>int en line pour l'utiliser lors de l'appel des fonction sum ou organize
+// qui prennet Line comme parametre
 Line toLine(vector<int> convertVector) {
 	Line returnLine (convertVector.size());
 	for (int i = 0; i < convertVector.size(); i++) {
@@ -71,7 +74,10 @@ Line toLine(vector<int> convertVector) {
 	return returnLine;
 }
 
-// NOTE : default parameters should only be assigned in the function declaration, i.e. in modele.h
+// note: default parameters should only be assigned in the function declaration, i.e. in modele.h
+// la fonction sumX prend Line comme parametre , line doit déja être organisé grâce aux fonctions organize
+// sumX verifie si 2 cases de line sont identitiques pour stocker la somme dans une case et 0 dans l'autre
+// si le déplacement est gauche , le parcours de la droite sinon de la gauche si le déplacement est vers la droite
 Line sumX(Line line, int dir/*=GAUCHE*/) {
 	if (dir == GAUCHE) {
 		for (int i = 0; i < 3; i++) {
@@ -93,7 +99,9 @@ Line sumX(Line line, int dir/*=GAUCHE*/) {
 	}
 	return line;
 }
-
+// la fonction sumY prend Column comme parametre , column doit déja être organisé grâce aux fonctions organize
+// sumY verifie si 2 cases de column sont identitiques pour stocker la somme dans une case et 0 dans l'autre
+// si le déplacement est bas , le parcours du haut sinon de haut si le déplacement est vers le bas
 Column sumY(Column column, int dir/*=HAUT*/){
 	if (dir == HAUT) {
 		for (int i = 0; i < 3; i++) {
@@ -115,7 +123,8 @@ Column sumY(Column column, int dir/*=HAUT*/){
 	}
 	return column;
 }
-
+// la fonction organizeLeft prend une line comme argument , parours line de la droite , et renvoie newline en stockant que les les cases non vides dans newline
+// le but est d'organiser les valeurs non nuls de line vers la gache
 Line organizeLeft(Line line) {
 	Line newLine = {0, 0, 0, 0};
 	int position = 0;
@@ -127,7 +136,8 @@ Line organizeLeft(Line line) {
 	}
 	return newLine;
 }
-
+// la fonction organieRight prend une line comme argument , parours line de la gauche , et renvoie newline en stockant que les les cases non vides dans newline
+// le but est d'organiser les valeurs non nuls de line vers la droite
 Line organizeRight(Line line) {
 	Line newLine = {0, 0, 0, 0};
 	int position = 3;
@@ -139,7 +149,8 @@ Line organizeRight(Line line) {
 	}
 	return newLine;
 }
-
+// la fonction organizeUp prend column en argument , parours column du haut , et renvoie newcolumn en stockant que les les cases non vides dans newcolumn
+// le but est d'organiser les valeurs non nuls de column vers la haut
 Column organizeUp(Column column) {
 	Column newColumn = {{0},
 					    {0},
@@ -154,7 +165,8 @@ Column organizeUp(Column column) {
 	}
 	return newColumn;
 }
-
+// la fonction organieRight prend column en argument , parours column de la gauche , et renvoie newcolumn en stockant que les les cases non vides dans newcolumn
+// le but est d'organiser les valeurs non nuls de column vers le bas
 Column organizeDown(Column column) {
 	Column newColumn = {{0},
 					    {0},
@@ -169,6 +181,10 @@ Column organizeDown(Column column) {
 	}
 	return newColumn;
 }
+// la fonction du déplacement prend un plateau en argument
+// convertit chaque ligne du platau qui est un vectort<int> en Type Line grâce à la fonction toLine
+//chaque Line est organisé , sommé et organisé encore une fois selon le déplacement efféctué
+// après chauqe mouvement, la somme effectué est stocké temporairement dans  score qui est un attribut de la classe Line ou Column pour assurer sa mise à jour après chauque mouvement
 
 Plateau deplacementGauche(Plateau plateau) {
 	Line line;
@@ -235,7 +251,7 @@ Plateau deplacementBas(Plateau plateau) {
 	}
 	return plateau;
 }
-
+ // fonction de déplacement qui à chaque direction de déplacement choisi, elle fait l'appel à la bonne fonction de déplacement qui renvoie le nouveau plateau 
 Plateau deplacement(Plateau plateau, int direction) {
 	Plateau oldPlateau = plateau;
 	if (direction == GAUCHE) {
@@ -258,7 +274,8 @@ Plateau deplacement(Plateau plateau, int direction) {
 	}
 	return plateau;
 }
-
+// fonction qui renvoie un entier , le  nombre de chiffres dans un nombre
+// but de la fonction
 int lenInt(int number) {
 	int len = 1;
 	for (int i = 10; number - i >= 0; i = i*10) {
@@ -297,7 +314,7 @@ string dessine(Plateau g) {
 	flux << starsDrawer();
 	return flux.str();
 }
-
+// le jeu se terminé quand le plateau renvoyé après chaque déplacement reste le même inchangé ; autrement dit aucun déplacement n'est possible
 bool estTermine(Plateau plateau){
 	vector<int> dir = {2, 4, 7, 8};
 	for( int i : dir){
@@ -307,7 +324,7 @@ bool estTermine(Plateau plateau){
 	}
 	return true;
 }
-
+// le joueur gagne si il parvient à arriver jusqu'à 2048, cependant le joueur va continuer à jouer jusqu'à ce que le jeu se termine 
 bool estGagnant(Plateau plateau){
 	for(int i = 0; i < plateau.size(); i++){
 		for (int j = 0; j < plateau[i].size(); j++){

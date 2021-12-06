@@ -76,12 +76,12 @@ Plateau plateauVide();
 */
 Plateau plateauInitial();
 
-// TODO : rewrite documentation
+
 /**
- * @brief renvoi un entier < maxInt aléatoirement
+ * @brief  fonction qui renvoie les indices d'une case vide du plateau
  * 
- * @param maxInt 
- * @return un entier compris entre 0 et maxInt
+ * @param un plateau  
+ * @return un vector<int> aléatoirement qui indique les indices du case du plateau vide i et j 
  */
 vector<int> randomPosition(Plateau plateau);
 
