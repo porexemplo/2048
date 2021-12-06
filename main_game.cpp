@@ -14,6 +14,12 @@ void refreshConsole() {
 }
 
 int main() {
+    // verify whether on windows
+    if (! inSystem) {
+        refreshConsole();
+        std::cout << "modify while loop before compiling in linux / mac";
+        return 0;
+    }
     refreshConsole();
     timeInit();
 

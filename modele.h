@@ -1,9 +1,26 @@
+/**
+ * @file modele.h
+ * @authors redwane, asma
+ * @brief contains function declarations and necessary libraries for the file
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
+// ISSUE : FIXED : multiple definitions of the same class -> pragma once
 #pragma once
 #include <iostream>
 #include <sstream>
 #include <vector>
 #include <string>
-#include <conio.h>
+
+// conio.h library exists for windows only
+#if defined _WIN32 || defined _WIN64
+    #include <conio.h>
+    #define inSystem 1
+#else
+    #define inSystem 0
+#endif
 #include <cstdlib>
 #include <ctime>
 #include <iomanip>
@@ -12,6 +29,7 @@
 
 using namespace std;
 
+// directions for conio.h arrow detection
 #define LEFT 75
 #define RIGHT 77
 #define UP 72
@@ -25,8 +43,10 @@ const int GAUCHE = 7,
 const int displayWidth = 7; // controls console display width
 
 
+// Plateau class inherits from vector<vector<int>> with score attribute
 class Plateau: public vector<vector<int>> {
 public:
+    // ISSUE : FIXED : constructors are not inherited by default
     using vector::vector;
     int score;
 };
@@ -227,5 +247,8 @@ int lenInt(int number);
  */
 Line toLine(vector<int> convertVector);
 
-
+/**
+ * @brief srands based on time, implemented in main_game.cpp
+ * 
+ */
 void timeInit();
