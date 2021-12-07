@@ -126,56 +126,7 @@ void test_deplacement() {
     assert(test_3);
     assert(test_4);
 }
-// probleme  lors de la compilation undefined organizeLeft and organizeRight
-/*
-void test_organizeLeft() {
-	Line line_1 = {2,0 , 4, 0};
-	Line line_2 = {0,8 , 4, 0};
-	Line line_3 = {2,8 , 4, 2};
-                         
-                         
-    Line organize_left_1 = {2, 4, 0, 0};
-    Line organize_left_2 = {8, 4, 0, 0};
-    Line organize_left_3 = {2, 8, 2, 4};
-							
-    
-    
-    bool test_1 = organizeLeft(line_1) == organize_left_1;
-    bool test_2 = organizeLeft(line_2) == organize_left_2;
-    bool test_3 = organizeLeft(line_3) == organize_left_3;
-   
-    
 
-    assert(test_1);
-    assert(test_2);
-    assert(test_3);
-                  
-	}
-	
-void test_organizeRight() {
-	Line line_1 = {2,0 , 4, 0};
-	Line line_2 = {0,8 , 4, 0};
-	Line line_3 = {2,8 , 4, 2};
-                         
-                         
-    Line organize_right_1 = {0, 0, 2, 4};
-    Line organize_right_2 = {0, 0,8, 4};
-    Line organize_right_3 = {2, 8, 2, 4};
-							
-    
-    
-    bool test_1 = organizeRight(line_1) == organize_right_1;
-    bool test_2 = organizeRight(line_2) == organize_right_2;
-    bool test_3 = organizeRight(line_3) == organize_right_3;
-   
-    
-
-    assert(test_1);
-    assert(test_2);
-    assert(test_3);
-                  
-	}
-*/
 void test_organizeUp() {
 	Column column_1 = {  {0},
                          {2},
@@ -406,10 +357,6 @@ int main() {
 	test_organizeUp();
 	
 	test_organizeDown();
-	
-	//test_organizeLeft();
-	
-	//test_organizeRight();
 
     /* TEST_GROUP_04 */
     test_starsDrawer();
