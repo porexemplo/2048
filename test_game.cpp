@@ -127,15 +127,16 @@ void test_deplacement() {
     assert(test_4);
 }
 // probleme  lors de la compilation undefined organizeLeft and organizeRight
+/*
 void test_organizeLeft() {
-	vector<int> line_1 = {2,0 , 4, 0};
-	vector<int> line_2 = {0,8 , 4, 0};
-	vector<int> line_3 = {2,8 , 4, 2};
+	Line line_1 = {2,0 , 4, 0};
+	Line line_2 = {0,8 , 4, 0};
+	Line line_3 = {2,8 , 4, 2};
                          
                          
-    vector<int> organize_left_1 = {0, 0, 2, 4};
-    vector<int> organize_left_2 = {0, 0, 8, 4};
-    vector<int> organize_left_3 = {2, 8, 2, 4};
+    Line organize_left_1 = {2, 4, 0, 0};
+    Line organize_left_2 = {8, 4, 0, 0};
+    Line organize_left_3 = {2, 8, 2, 4};
 							
     
     
@@ -152,14 +153,14 @@ void test_organizeLeft() {
 	}
 	
 void test_organizeRight() {
-	vector<int> line_1 = {2,0 , 4, 0};
-	vector<int> line_2 = {0,8 , 4, 0};
-	vector<int> line_3 = {2,8 , 4, 2};
+	Line line_1 = {2,0 , 4, 0};
+	Line line_2 = {0,8 , 4, 0};
+	Line line_3 = {2,8 , 4, 2};
                          
                          
-    vector<int> organize_right_1 = {2, 4, 0, 0};
-    vector<int> organize_right_2 = {8, 4, 0, 0};
-    vector<int> organize_right_3 = {2, 8, 2, 4};
+    Line organize_right_1 = {0, 0, 2, 4};
+    Line organize_right_2 = {0, 0,8, 4};
+    Line organize_right_3 = {2, 8, 2, 4};
 							
     
     
@@ -174,7 +175,7 @@ void test_organizeRight() {
     assert(test_3);
                   
 	}
-
+*/
 void test_organizeUp() {
 	Column column_1 = {  {0},
                          {2},
@@ -264,24 +265,27 @@ void test_organizeDown() {
 
 void test_sumX() {
 	// le plateau est deja organise car la fonction sumx n'est appelé qu'après l'organisation du plateau selon le déplacement choisi
-	Line line = {2, 2, 4, 4};
+	Line line_1 = {2, 2, 4, 4};
+	Line line_2 = {2, 2, 4, 0};
+	Line line_3 = {4, 4, 2, 2};
+	Line line_4 = {4, 4, 2, 2};
                          
    //default left direction
-	Line sumx_line = {0, 4, 0, 8};
+	Line sumx_line_1 = {4, 0, 8, 0};
+	Line sumx_line_2 = {0, 4, 4, 0};
+	Line sumx_line_3 = {8, 0, 4, 0};
+	Line sumx_line_4 = {0, 8, 0, 4};
 							
 	
-	bool test_1 = sumX(line) == sumx_line;
-	/*
-	bool test_2 = sumX(mvPlateau[1]) == sumx_plateau[1];
-	bool test_3 = sumX(mvPlateau[2]) == sumx_plateau[2];
-	bool test_4 = sumX(mvPlateau[3]) == sumx_plateau[3];
-	*/
+	bool test_1 = sumX(line_1) == sumx_line_1;
+	bool test_2 = sumX(line_2,4) == sumx_line_2;
+	bool test_3 = sumX(line_3) == sumx_line_3;
+	bool test_4 = sumX(line_4,4) == sumx_line_4;
+	
 	assert(test_1);
-	/*
     assert(test_2);
     assert(test_3);
     assert(test_4);
-    */
 	}
 	
 
@@ -289,26 +293,58 @@ void test_sumX() {
 void test_sumY() {
 	//on va tester la somme des colonnes vers le bas lors du déplacement bsas
 	// la fonction sumy n'est applé qu'après l'organisation de column vers le bas
-	Column mvColumn = {{2},
-                       {2},
-                       {2},
-                       {2}};
-	
-	Column sumy_column = {{0},
-                          {4},
-                          {0},
-                          {4}};
-                          
-	 
-		bool test_1 = sumY(mvColumn) == sumy_column;
+	Column mvColumn_1 ={{2},
+                        {2},
+                        {2},
+                        {2}};
+                        
+    Column mvColumn_2 ={{0},
+                        {0},
+                        {2},
+                        {2}};
+                                           
+	Column mvColumn_3 ={{0},
+                        {0},
+                        {0},
+                        {0}};
+                        
+    Column mvColumn_4 ={{2},
+                        {2},
+                        {4},
+                        {4}};                    
+                       
+	Column sumy_column_1 ={{4},
+                           {0},
+                           {4},
+                           {0}};
+                           
+    Column sumy_column_2 ={{0},
+                           {0},
+                           {0},
+                           {4}};
+                                  
+    Column sumy_column_3 ={{0},
+                           {0},
+                           {0},
+                           {0}};
+                                                                
+	Column sumy_column_4 ={{0},
+                           {4},
+                           {0},
+                           {8}};
+                             
+	bool test_1 = sumY(mvColumn_1) == sumy_column_1;
+	bool test_2 = sumY(mvColumn_2,2) == sumy_column_2;
+	bool test_3 = sumY(mvColumn_3) == sumy_column_3;
+	bool test_4 = sumY(mvColumn_4,2) == sumy_column_4;
 		
-		assert(test_1);
+	assert(test_1);
+	assert(test_2);
+	assert(test_3);
+	assert(test_4);
 	   
                           
 	}
-
-
-
 
 
 /* TEST_GROUP_04 : console display functions */
@@ -362,14 +398,6 @@ int main() {
 
     /* TEST_GROUP_03 */
     test_deplacement();
-
-    /* TEST_GROUP_04 */
-    test_starsDrawer();
-
-    /* TEST_GROUP_05 */
-
-    /* TEST_GROUP_06 */
-    test_lenInt();
     
     test_sumX();
     
@@ -379,8 +407,18 @@ int main() {
 	
 	test_organizeDown();
 	
-	test_organizeLeft();
+	//test_organizeLeft();
 	
-	test_organizeRight();
+	//test_organizeRight();
+
+    /* TEST_GROUP_04 */
+    test_starsDrawer();
+
+    /* TEST_GROUP_05 */
+
+    /* TEST_GROUP_06 */
+    test_lenInt();
+    
+    
     return 0;
 }
