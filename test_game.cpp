@@ -159,13 +159,13 @@ void test_organizeUp() {
 							{4},
 							{2}};						
     
-		bool test_1 = organizeUp(column_1) == organize_up_1;
-		bool test_2 = organizeUp(column_2) == organize_up_2;
-		bool test_3 = organizeUp(column_3) == organize_up_3;
-		
-		assert(test_1);
-		assert(test_2);
-		assert(test_3);
+    bool test_1 = organizeUp(column_1) == organize_up_1;
+    bool test_2 = organizeUp(column_2) == organize_up_2;
+    bool test_3 = organizeUp(column_3) == organize_up_3;
+    
+    assert(test_1);
+    assert(test_2);
+    assert(test_3);
 		 
 	
 	}
@@ -237,9 +237,7 @@ void test_sumX() {
     assert(test_2);
     assert(test_3);
     assert(test_4);
-	}
-	
-
+}
 
 void test_sumY() {
 	//on va tester la somme des colonnes vers le bas lors du déplacement bsas
@@ -293,9 +291,7 @@ void test_sumY() {
 	assert(test_2);
 	assert(test_3);
 	assert(test_4);
-	   
-                          
-	}
+}
 
 
 /* TEST_GROUP_04 : console display functions */
@@ -316,8 +312,16 @@ void test_starsDrawer() {
 }
 
 /* TEST_GROUP_05 : plateau properties functions */
-void test_estTermine() {}
-void test_estGagnant() {}
+void test_estGagnant() {
+    Plateau plateau = plateauInitial();
+    plateau[0][0] = 2048;
+
+    bool test_1 = 1 == estGagnant(plateau);
+    bool test_2 = 0 == estGagnant(plateauInitial());
+
+    assert(test_1);
+    assert(test_2);
+}
 
 /* TEST_GROUP_06 : mid-functions */
 void test_lenInt() {
@@ -362,10 +366,10 @@ int main() {
     test_starsDrawer();
 
     /* TEST_GROUP_05 */
+    test_estGagnant();
 
     /* TEST_GROUP_06 */
     test_lenInt();
-    
     
     return 0;
 }
